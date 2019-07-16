@@ -6,8 +6,8 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';
 import reducers from './src/store/redux/reducers';
-import { sagaWatcher } from './src/store/saga';
-import AppContainer from './src/navigation';
+import { sagaWatcher } from './src/store/sagas';
+import AppContainer from './src/navigation/AppNavigator';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
@@ -24,7 +24,7 @@ export default class App extends React.Component {
   render(){
     return (
       <Provider store={store}>
-        <AppNavigator/>
+        <AppContainer/>
       </Provider>
     );
   }

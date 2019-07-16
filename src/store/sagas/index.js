@@ -1,5 +1,5 @@
-import { takeLatest } from 'redux-saga';
+import { takeLatest } from 'redux-saga/effects';
 
-export default function* sagaWatcher(){
-    // yield takeLatest()
+export function* sagaWatcher(){
+    yield takeLatest('S', ()=>{})
 }

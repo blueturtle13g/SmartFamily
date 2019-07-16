@@ -3,11 +3,17 @@ import {
   createStackNavigator,
   createSwitchNavigator,
 } from 'react-navigation';
-import LandingScreen from '@screens/auth/landing/LandingScreen.react';
+import PhoneNumberScreen from '../screens/auth/phoneNumber/PhoneNumberScreen.react';
+import ConfirmCodeScreen from '../screens/auth/confirmCode/ConfirmCodeScreen.react';
+import PasswordScreen from '../screens/auth/password/PasswordScreen.react';
+import FamilyMembersScreen from '../screens/auth/familyMembers/FamilyMembersScreen.react';
 
 const AuthStack = createStackNavigator(
   {
-    Landing: LandingScreen,
+    PhoneNumberScreen,
+    ConfirmCodeScreen,
+    PasswordScreen,
+    FamilyMembersScreen,
   },
   {
     headerMode: 'none',
