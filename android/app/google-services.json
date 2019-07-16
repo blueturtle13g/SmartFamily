@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1027625980371",
+    "firebase_url": "https://smartfamily-e29fd.firebaseio.com",
+    "project_id": "smartfamily-e29fd",
+    "storage_bucket": "smartfamily-e29fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027625980371:android:050eabb69f79737b",
+        "android_client_info": {
+          "package_name": "com.smartfamily"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1027625980371-u3f42q7qf3gmt7qtcqilf0a2ibs84vo5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxNOXUv40kRrmfMZDc_Z4xHQxXmRzp4uo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1027625980371-u3f42q7qf3gmt7qtcqilf0a2ibs84vo5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
