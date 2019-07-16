@@ -4,6 +4,7 @@ import {
   Text,
   View,
   Switch,
+  Modal,
 } from 'react-native';
 import styles from './styles';
 import CheckBox from '../../../../../components/checkBox/CheckBox.react';
@@ -15,7 +16,9 @@ export default ({
   specifications,
   onUpdate,
   onSubmit,
-    specificationsTitle,
+  specificationsTitle,
+  visible,
+  onHide,
 })=>{
   const _renderOptions = ()=>{
     return specifications.map(({title, description, type, value})=>{
@@ -42,23 +45,29 @@ export default ({
   };
 
   return (
-    <View style={styles.mainContainer}>
-      <View style={styles.topContainer}>
-        <Text style={styles.title}>{specificationsTitle}</Text>
-      </View>
+    <Modal
+      visible={visible}
+      animationType="slide"
+      onRequestClose={onHide}
+    >
+      <View style={styles.mainContainer}>
+        <View style={styles.topContainer}>
+          <Text style={styles.title}>{specificationsTitle}</Text>
+        </View>
 
-      <View style={styles.bottomContainer}>
-        <View style={styles.optionsContainer}>
-          {_renderOptions()}
-          <TouchableOpacity
-            style={styles.submitButton}
-            onPress={onSubmit}
-            activeOpacity={.8}
-          >
-            <Text style={styles.buttonTitle}>Submit</Text>
-          </TouchableOpacity>
+        <View style={styles.bottomContainer}>
+          <View style={styles.optionsContainer}>
+            {_renderOptions()}
+            <TouchableOpacity
+              style={styles.submitButton}
+              onPress={onSubmit}
+              activeOpacity={.8}
+            >
+              <Text style={styles.buttonTitle}>Submit</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
-    </View>
+    </Modal>
   );
 }

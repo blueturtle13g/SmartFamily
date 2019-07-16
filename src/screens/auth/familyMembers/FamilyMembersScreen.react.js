@@ -10,8 +10,7 @@ import {
 import styles from './FamilyMembersScreen.style';
 import axios from 'axios';
 import FamilyMemberCard from './components/familyMemberCard';
-import AddMemberModal from './components/addMemberModal';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import AddMemberButton from './components/addMemberButton';
 
 export default class FamilyMembersScreen extends React.Component {
   state = {
@@ -21,11 +20,21 @@ export default class FamilyMembersScreen extends React.Component {
   };
 
   _onSubmit = ()=>{
-    this.props.navigation.navigate('FamilyMembersScreen')
+    this.props.navigation.navigate('WelcomeScreen')
   };
 
   _onSubmitMember = member=>{
     const { members } = this.state;
+    if(member.id !== undefined){
+      this.setState({
+        modalVisible: false,
+        members: members.map(m=>{
+          return m.id === member.id ? member : m
+        })
+      })
+      return;
+    }
+
     this.setState({
         members: members.concat({
             ...member,
@@ -34,14 +43,25 @@ export default class FamilyMembersScreen extends React.Component {
         modalVisible: false
     });
   };
-  _toggleModal = ()=>this.setState({modalVisible: !this.state.modalVisible});
+
+  _onPlusButtonPress = ()=>{
+    this.props.navigation.navigate('MemberFormScreen', {
+      onSubmit: this._onSubmitMember,
+    })
+  }
+
+  _onModifyMemberPress = member=>{
+    this.props.navigation.navigate('MemberFormScreen', {
+      onSubmit: this._onSubmitMember,
+      member,
+    })
+  }
 
   render() {
     const {
-      loading,
-      modalVisible,
       members,
     } = this.state;
+    console.log('members: ', members)
     return (
       <View style={styles.mainContainer}>
         <View style={styles.topContainer}>
@@ -50,16 +70,14 @@ export default class FamilyMembersScreen extends React.Component {
 
         <View style={styles.bottomContainer}>
             <View style={styles.membersContainer}>
-                {members.map(member=><FamilyMemberCard key={member.id} member={member}/>)}
-                <TouchableOpacity
-                    style={styles.plusButton}
-                    onPress={this._toggleModal}
-                >
-                    <AntDesign
-                        name={'plus'}
-                        size={30}
-                    />
-                </TouchableOpacity>
+                {members.map(member=>
+                  <FamilyMemberCard
+                    key={member.id}
+                    member={member}
+                    onModifyPress={()=>this._onModifyMemberPress(member)}
+                  />
+                )}
+                <AddMemberButton onPress={this._onPlusButtonPress}/>
             </View>
 
           {members.length>0 &&(
@@ -72,11 +90,6 @@ export default class FamilyMembersScreen extends React.Component {
             </TouchableOpacity>
           )}
         </View>
-        <AddMemberModal
-            visible={modalVisible}
-            onSubmit={this._onSubmitMember}
-            onCancel={this._toggleModal}
-        />
       </View>
     );
   }

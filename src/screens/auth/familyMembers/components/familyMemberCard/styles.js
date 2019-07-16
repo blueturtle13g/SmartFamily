@@ -23,9 +23,10 @@ export default StyleSheet.create({
         height: 30,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'pink',
+        backgroundColor: '#aaa',
     },
     buttonTitle:{
         fontSize: 17,
+        color: '#fff'
     }
 });
