@@ -2,9 +2,10 @@ import {
     UPDATE_PROP,
 } from '../types';
 
-export const updateProp = value=>{
+export const updateProp = (key,value)=>{
     return{
-        key: UPDATE_PROP,
+        type: UPDATE_PROP,
+        key,
         value,
     }
 }

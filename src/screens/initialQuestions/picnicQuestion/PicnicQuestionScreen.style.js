@@ -5,13 +5,8 @@ export default StyleSheet.create({
   mainContainer:{
     flex: 1,
   },
-  loadingIndicator:{
-    width: '100%',
-    height: '100%',
-  },
   titleContainer:{
       flex: .8,
-    //   backgroundColor: 'yellow',
       justifyContent: 'flex-end',
       alignItems: 'center',
   },
@@ -24,28 +19,31 @@ export default StyleSheet.create({
   familyImage:{
       flex: 2.2,
       width: '100%',
-    //   backgroundColor: 'blue',
       resizeMode: 'contain',
   },
-  descriptionContainer:{
-      justifyContent: 'center',
-      alignItems: 'center',
-      flex: 2,
-    //   backgroundColor: 'pink',
+  questionContainer:{
+    justifyContent: 'space-between',
+    paddingVertical: 15,
+    alignItems: 'center',
+    flex: 1.8,
+  },
+  question:{
+    marginVertical: 2,
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#fff',
   },
   description:{
-      marginVertical: 2,
-      fontSize: 17,
-      color: '#fff',
-  },
-  mainDescription:{
-    marginBottom: 15,
-    fontWeight: 'bold',
+    fontWeight: 'normal',
+    fontSize: 17,
   },
   buttonContainer:{
-      flex: .8,
-    //   backgroundColor: 'green',
-      paddingTop: 5,
+    flex: 1,
   },
-
+  dotsContainer:{
+    flex: .8,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
 });

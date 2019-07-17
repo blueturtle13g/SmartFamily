@@ -14,11 +14,16 @@ export default StyleSheet.create({
     fontSize: 20,
     color: '#fff',
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 14,
   },
   familyImage:{
       flex: 2.2,
       width: '100%',
       resizeMode: 'contain',
   },
+  backIcon:{
+    position: 'absolute',
+    right: 25,
+    bottom: 10,
+  }
 });

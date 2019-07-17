@@ -10,16 +10,22 @@ import FamilyMembersScreen from '../screens/auth/familyMembers/FamilyMembersScre
 import MemberFormScreen from '../screens/auth/memberForm/MemberFormScreen.react';
 import WelcomeScreen from '../screens/auth/welcome/WelcomeScreen.react';
 import LandingScreen from '../screens/auth/landing/LandingScreen.react';
+import RestaurantQuestionScreen from '../screens/initialQuestions/restaurantQuestion/RestaurantQuestionScreen.react';
+import PicnicQuestionScreen from '../screens/initialQuestions/picnicQuestion/PicnicQuestionScreen.react';
+import RegimeQuestionScreen from '../screens/initialQuestions/regimeQuestion/RegimeQuestionScreen.react';
 
 const AuthStack = createStackNavigator(
   {
     LandingScreen,
-    ConfirmCodeScreen,
     PhoneNumberScreen,
+    ConfirmCodeScreen,
     PasswordScreen,
-    FamilyMembersScreen,
-    MemberFormScreen,
-    WelcomeScreen,
+    RestaurantQuestionScreen,
+    PicnicQuestionScreen,
+    RegimeQuestionScreen,
+    // FamilyMembersScreen,
+    // MemberFormScreen,
+    // WelcomeScreen,
   },
   {
     headerMode: 'none',

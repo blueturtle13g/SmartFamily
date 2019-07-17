@@ -1,26 +1,26 @@
 import React from 'react';
 import {
-  ActivityIndicator,
-  TouchableOpacity,
-  TextInput,
-  Text,
-  View,
+  View, Text,
 } from 'react-native';
 import styles from './ConfirmCodeScreen.style';
 import axios from 'axios';
 import { BASE_URL } from 'SmartFamily/src/constants/Api';
+import InputWithLabel from 'SmartFamily/src/components/landing/inputWithLabel';
+import ProgressBar from 'SmartFamily/src/components/landing/progressBar';
+import LandingWrapper from 'SmartFamily/src/components/landing/landingWrapper';
+import LandingButton from 'SmartFamily/src/components/landing/landingButton';
+import { connect } from 'react-redux';
 
-export default class ConfirmCodeScreen extends React.Component {
+class ConfirmCodeScreen extends React.Component {
   state = {
     loading: false,
     confirmCode: '',
   };
 
   _onSubmit = async ()=>{
-    const { phoneNumber } = this.state;
-    if(phoneNumber.length<11){
-      return;
-    }
+    this.props.navigation.navigate('PasswordScreen');
+    return;
+
     try{
       const res = await axios.post(BASE_URL+'Identity/Api/Account/SignUp?dto.phone='+phoneNumber);
       if(res.data.isSuccess){
@@ -32,28 +32,38 @@ export default class ConfirmCodeScreen extends React.Component {
   }
 
   render() {
+    const { keyboardOpen } = this.props;
     const { loading, confirmCode } = this.state;
-    
-    return (
-      <View style={styles.mainContainer}>
+    return(
+      <LandingWrapper keyboardOpen={keyboardOpen} onBackPress={()=>this.props.navigation.goBack()}>
         <View style={styles.inputContainer}>
-          <TextInput
+          <InputWithLabel
+            secureTextEntry
             value={confirmCode}
             onChangeText={confirmCode=>this.setState({confirmCode})}
             style={styles.textInput}
-            placeholder="Your Code"
+            placeholder="*****"
             keyboardType="number-pad"
+            onChangeText={confirmCode=>this.setState({confirmCode})}
+            labelText="کد تایید"
           />
+          <Text style={styles.inputDescription}>کد تایید ۵ رقمی پیامک شده را وارد کنید.</Text>
         </View>
-
-        <TouchableOpacity
-          onPress={this._onSubmit}
-          style={styles.submitButton}
-        >
-          <Text>Submit</Text>
-          {loading &&<ActivityIndicator style={styles.buttonLoading} />}
-        </TouchableOpacity>
-      </View>
+        {!keyboardOpen &&(
+          <View style={styles.progressBarContainer}>
+            <ProgressBar percentage={70}/>
+          </View>
+        )}
+        <View style={[styles.buttonContainer, keyboardOpen &&{justifyContent: 'center'}]}>
+          {confirmCode.length===5 &&(<LandingButton title={'ثبت کد تایید'} onPress={this._onSubmit}/>)}
+        </View>
+      </LandingWrapper>
     );
   }
 }
+
+const mapStateToProps = ({keyboardOpen})=>{
+  return {keyboardOpen}
+}
+
+export default connect(mapStateToProps)(ConfirmCodeScreen);

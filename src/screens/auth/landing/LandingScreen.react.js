@@ -2,21 +2,34 @@ import React from 'react';
 import {
   AsyncStorage,
   ActivityIndicator,
-  TouchableOpacity,
   Text,
   View,
+  Keyboard,
 } from 'react-native';
 import styles from './LandingScreen.style';
 import axios from 'axios';
 import LandingWrapper from 'SmartFamily/src/components/landing/landingWrapper';
 import LandingButton from 'SmartFamily/src/components/landing/landingButton';
+import { KEYBOARD_OPEN } from 'SmartFamily/src/store/redux/types';
+import { updateProp } from 'SmartFamily/src/store/redux/actions';
+import { connect } from 'react-redux';
 
-export default class LandingScreen extends React.Component {
+class LandingScreen extends React.Component {
   state = {
     verifying: true,
   };
 
+
   async componentDidMount() {
+    this.keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      this._keyboardDidShow,
+    );
+    this.keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      this._keyboardDidHide,
+    );
+
     try {
       const jwtAccessToken = await AsyncStorage.getItem('jwtAccessToken');
       if (!jwtAccessToken) {
@@ -47,6 +60,14 @@ export default class LandingScreen extends React.Component {
     }
   };
 
+  componentWillUnmount() {
+    this.keyboardDidShowListener.remove();
+    this.keyboardDidHideListener.remove();
+  }
+
+  _keyboardDidShow =()=>this.props.updateProp(KEYBOARD_OPEN, true);
+  _keyboardDidHide =()=>this.props.updateProp(KEYBOARD_OPEN, false);
+
   _onSubmit = ()=>{
     this.props.navigation.navigate('PhoneNumberScreen');
   }
@@ -66,9 +87,11 @@ export default class LandingScreen extends React.Component {
                 <Text style={styles.description}>و پول کمتری خرج کنید</Text>
             </View>
             <View style={styles.buttonContainer}>
-                <LandingButton onPress={this._onSubmit}/>
+                <LandingButton title={'ورود به برنامه'} onPress={this._onSubmit}/>
             </View>
         </LandingWrapper>
     );
   }
 }
+
+export default connect(null, { updateProp })(LandingScreen);
