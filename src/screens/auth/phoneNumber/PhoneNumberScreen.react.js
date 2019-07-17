@@ -1,14 +1,17 @@
 import React from 'react';
 import {
   AsyncStorage,
-  ActivityIndicator,
-  TouchableOpacity,
   TextInput,
-  Text,
   View,
+  Text,
 } from 'react-native';
 import styles from './PhoneNumberScreen.style';
 import axios from 'axios';
+import { BASE_URL } from 'SmartFamily/src/constants/Api';
+import LandingWrapper from 'SmartFamily/src/components/landing/landingWrapper';
+import LandingButton from 'SmartFamily/src/components/landing/landingButton';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { convertToPersianNumbers } from 'SmartFamily/src/utils';
 
 export default class PhoneNumberScreen extends React.Component {
   state = {
@@ -50,36 +53,52 @@ export default class PhoneNumberScreen extends React.Component {
     }
   };
 
-  _onSubmit = ()=>{
-    this.props.navigation.navigate('ConfirmCodeScreen')
+  _onSubmit = async ()=>{
+    const { phoneNumber } = this.state;
+    if(phoneNumber.length<11){
+      return;
+    }
+    try{
+      const res = await axios.post(BASE_URL+'Identity/Api/Account/SignUp?dto.phone='+phoneNumber);
+      console.log('res: ', res);
+      if(res.data.isSuccess){
+        this.props.navigation.navigate('ConfirmCodeScreen');
+      }
+    }catch(e){
+      console.log('e: ', e)
+    }
   }
 
 
   render() {
     const { loading, verifying, phoneNumber } = this.state;
-    if(verifying){
-      return <ActivityIndicator style={styles.loadingIndicator} size="large"/>
-    }
-    return (
-      <View style={styles.mainContainer}>
-        <View style={styles.inputContainer}>
-          <TextInput
-            value={phoneNumber}
-            onChangeText={phoneNumber=>this.setState({phoneNumber})}
-            style={styles.textInput}
-            placeholder="Phone Number"
-            keyboardType="phone-pad"
-          />
+    return(
+      <LandingWrapper>
+        <View style={styles.mainContainer}>
+          <View style={styles.inputContainer}>
+            <View style={styles.inputWrapper}>
+              <TextInput
+                value={convertToPersianNumbers(phoneNumber)}
+                onChangeText={phoneNumber=>this.setState({phoneNumber})}
+                style={styles.textInput}
+                placeholder={convertToPersianNumbers("09000000000")}
+                keyboardType="phone-pad"
+                contextMenuHidden={true}
+              />
+              <View style={styles.inputLabel}>
+                <Text style={styles.labelText}>شماره موبایل</Text>
+                <FontAwesome size={30} name={'mobile-phone'} style={styles.labelIcon}/>
+              </View>
+            </View>
+          </View>
         </View>
+        <View style={styles.progressBarCntainer}>
 
-        <TouchableOpacity
-          onPress={this._onSubmit}
-          style={styles.submitButton}
-        >
-          <Text>Submit</Text>
-          {loading &&<ActivityIndicator style={styles.buttonLoading} />}
-        </TouchableOpacity>
-      </View>
-    );
+        </View>
+        <View style={styles.buttonContainer}>
+            <LandingButton onPress={this._onSubmit}/>
+        </View>
+      </LandingWrapper>
+    )
   }
 }

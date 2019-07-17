@@ -12,7 +12,7 @@ import {
     FEMALE_SPECS,
     MALE_SPECS,
     BABY_SPECS,
-}from '../../../constants';
+}from 'SmartFamily/src/constants';
 import MemberSpecificationsModal from './components/memberSpecificationsModal';
 
 export default class MemberFormScreen extends React.Component{

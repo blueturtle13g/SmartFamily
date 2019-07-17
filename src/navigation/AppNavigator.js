@@ -9,11 +9,13 @@ import PasswordScreen from '../screens/auth/password/PasswordScreen.react';
 import FamilyMembersScreen from '../screens/auth/familyMembers/FamilyMembersScreen.react';
 import MemberFormScreen from '../screens/auth/memberForm/MemberFormScreen.react';
 import WelcomeScreen from '../screens/auth/welcome/WelcomeScreen.react';
+import LandingScreen from '../screens/auth/landing/LandingScreen.react';
 
 const AuthStack = createStackNavigator(
   {
-    PhoneNumberScreen,
+    LandingScreen,
     ConfirmCodeScreen,
+    PhoneNumberScreen,
     PasswordScreen,
     FamilyMembersScreen,
     MemberFormScreen,

@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
-import Colors from '../../../constants/Colors';
-import Layout from '../../../constants/Layout';
+import Colors from 'SmartFamily/src/constants/Colors';
+import Layout from 'SmartFamily/src/constants/Layout';
 
 export default StyleSheet.create({
   mainContainer:{

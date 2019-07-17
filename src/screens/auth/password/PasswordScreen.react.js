@@ -16,7 +16,19 @@ export default class PasswordScreen extends React.Component {
     confirmPassword: '',
   };
 
-  _onSubmit = ()=>{
+  _onSubmit = async ()=>{
+    const { phoneNumber } = this.state;
+    if(phoneNumber.length<11){
+      return;
+    }
+    try{
+      const res = await axios.post(BASE_URL+'Identity/Api/Account/SignInVerification?dto.phone='+phoneNumber);
+      if(res.data.isSuccess){
+        this.props.navigation.navigate('ConfirmCodeScreen');
+      }
+    }catch(e){
+      console.log('e: ', e)
+    }
     this.props.navigation.navigate('FamilyMembersScreen')
     
   }

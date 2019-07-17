@@ -7,7 +7,7 @@ import {
 import styles from './WelcomeScreen.style';
 import {
     DEVICE_WIDTH,
-} from '../../../constants/Layout';
+} from 'SmartFamily/src/constants/Layout';
 import Slide from './components/slide';
 
 const FIXED_BAR_WIDTH = 50

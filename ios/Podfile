@@ -34,6 +34,8 @@ target 'SmartFamily' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+
   target 'SmartFamilyTests' do
     inherit! :search_paths
     # Pods for testing

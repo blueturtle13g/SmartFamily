@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import styles from './ConfirmCodeScreen.style';
 import axios from 'axios';
+import { BASE_URL } from 'SmartFamily/src/constants/Api';
 
 export default class ConfirmCodeScreen extends React.Component {
   state = {
@@ -15,9 +16,20 @@ export default class ConfirmCodeScreen extends React.Component {
     confirmCode: '',
   };
 
-  _onSubmit = ()=>{
-    this.props.navigation.navigate('PasswordScreen')
-  };
+  _onSubmit = async ()=>{
+    const { phoneNumber } = this.state;
+    if(phoneNumber.length<11){
+      return;
+    }
+    try{
+      const res = await axios.post(BASE_URL+'Identity/Api/Account/SignUp?dto.phone='+phoneNumber);
+      if(res.data.isSuccess){
+        this.props.navigation.navigate('PasswordScreen');
+      }
+    }catch(e){
+      console.log('e: ', e)
+    }
+  }
 
   render() {
     const { loading, confirmCode } = this.state;

@@ -7,10 +7,10 @@ import {
   Modal,
 } from 'react-native';
 import styles from './styles';
-import CheckBox from '../../../../../components/checkBox/CheckBox.react';
+import CheckBox from 'SmartFamily/src/components/checkBox/CheckBox.react';
 import {
     SWITCH_TYPE,
-}from '../../../../../constants';
+}from 'SmartFamily/src/constants';
 
 export default ({
   specifications,
