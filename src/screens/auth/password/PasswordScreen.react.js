@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  View, Text,
-} from 'react-native';
+import { View } from 'react-native';
 import styles from './PasswordScreen.style';
 import axios from 'axios';
 import { BASE_URL } from 'SmartFamily/src/constants/Api';
@@ -10,6 +8,7 @@ import ProgressBar from 'SmartFamily/src/components/landing/progressBar';
 import LandingWrapper from 'SmartFamily/src/components/landing/landingWrapper';
 import LandingButton from 'SmartFamily/src/components/landing/landingButton';
 import { connect } from 'react-redux';
+import IranSansText from 'SmartFamily/src/components/iranSansText';
 
 class PasswordScreen extends React.Component {
   state = {
@@ -42,27 +41,33 @@ class PasswordScreen extends React.Component {
         onBackPress={()=>this.props.navigation.goBack()}
       >
         <View style={styles.inputsContainer}>
-          <View style={styles.inputContainer}>
-            <InputWithLabel
-              value={password}
-              onChangeText={password=>this.setState({password})}
-              placeholder="******"
-              secureTextEntry
-              labelText="کد تایید"
-            />
-            <Text style={styles.inputDescription}>کد تایید ۵ رقمی پیامک شده را وارد کنید.</Text>
-          </View>
+          <InputWithLabel
+            value={password}
+            onChangeText={password=>this.setState({password})}
+            placeholder="******"
+            secureTextEntry
+            labelText="رمز عبور"
+            inputDescription={
+              !keyboardOpen
+              ?
+                "رمز عبور باید حداقل شامل ۶ کاراکتر باشد."
+              :
+                ""
+            }
+          />
 
-          <View style={[styles.inputContainer, keyboardOpen &&{flex: 2}]}>
-            <InputWithLabel
-              value={confirmPassword}
-              onChangeText={confirmPassword=>this.setState({confirmPassword})}
-              placeholder="******"
-              secureTextEntry
-              labelText="کد تایید"
-            />
-            <Text style={styles.inputDescription}>کد تایید ۵ رقمی پیامک شده را وارد کنید.</Text>
-          </View>
+          <InputWithLabel
+            value={confirmPassword}
+            onChangeText={confirmPassword=>this.setState({confirmPassword})}
+            placeholder="******"
+            secureTextEntry
+            labelText="تکرار رمز عبور"
+            inputDescription={!keyboardOpen ?
+              "رمز عبور باید حداقل شامل ۶ کاراکتر باشد."
+              :
+              ""
+            }
+          />
 
         </View>
         {!keyboardOpen &&(
@@ -70,7 +75,7 @@ class PasswordScreen extends React.Component {
             <ProgressBar percentage={isPasswordValid ? 100 : 70}/>
           </View>
         )}
-        <View style={[styles.buttonContainer, keyboardOpen &&{justifyContent: 'center'}]}>
+        <View style={[styles.buttonContainer, keyboardOpen &&{flex: .7}]}>
           {isPasswordValid &&(<LandingButton title={'ورود به اسمارت فمیلی'} onPress={this._onSubmit}/>)}
         </View>
       </LandingWrapper>

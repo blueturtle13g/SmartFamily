@@ -13,7 +13,6 @@ export default StyleSheet.create({
   title:{
     fontSize: 20,
     color: '#fff',
-    fontWeight: 'bold',
     marginBottom: 10,
   },
   familyImage:{
@@ -22,20 +21,21 @@ export default StyleSheet.create({
       resizeMode: 'contain',
   },
   questionContainer:{
-      justifyContent: 'space-between',
-      paddingVertical: 15,
-      alignItems: 'center',
-      flex: 1.8,
+    justifyContent: 'space-between',
+    paddingVertical: 15,
+    alignItems: 'center',
+    flex: 1.8,
   },
   question:{
-      marginVertical: 2,
-      fontSize: 18,
-      fontWeight: 'bold',
-      color: '#fff',
+    marginVertical: 2,
+    fontSize: 18,
+    color: '#fff',
+  },
+  description:{
+    fontSize: 16,
   },
   buttonContainer:{
-      flex: 1,
-      // backgroundColor: 'red',
+    flex: 1,
   },
   dotsContainer:{
     flex: .8,

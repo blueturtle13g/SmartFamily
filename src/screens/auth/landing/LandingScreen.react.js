@@ -2,7 +2,6 @@ import React from 'react';
 import {
   AsyncStorage,
   ActivityIndicator,
-  Text,
   View,
   Keyboard,
 } from 'react-native';
@@ -13,6 +12,7 @@ import LandingButton from 'SmartFamily/src/components/landing/landingButton';
 import { KEYBOARD_OPEN } from 'SmartFamily/src/store/redux/types';
 import { updateProp } from 'SmartFamily/src/store/redux/actions';
 import { connect } from 'react-redux';
+import IranSansText from 'SmartFamily/src/components/iranSansText';
 
 class LandingScreen extends React.Component {
   state = {
@@ -80,11 +80,11 @@ class LandingScreen extends React.Component {
     return (
         <LandingWrapper>
             <View style={styles.descriptionContainer}>
-                <Text style={[styles.description, styles.mainDescription]}>دوست داری سبک زندگی بهتری داشته باشی؟!</Text>
-                <Text style={styles.description}>ما کمک میکنیم رژیم غذایی سالم تری داشته باشید</Text>
-                <Text style={styles.description}>بیشتر تفریح کنید</Text>
-                <Text style={styles.description}>راحت تر رفت و آمد کنید</Text>
-                <Text style={styles.description}>و پول کمتری خرج کنید</Text>
+                <IranSansText fontWeight="Bold" style={[styles.description, styles.mainDescription]}>دوست داری سبک زندگی بهتری داشته باشی؟!</IranSansText>
+                <IranSansText fontWeight="Medium" style={styles.description}>ما کمک میکنیم رژیم غذایی سالم تری داشته باشید</IranSansText>
+                <IranSansText fontWeight="Medium" style={styles.description}>بیشتر تفریح کنید</IranSansText>
+                <IranSansText fontWeight="Medium" style={styles.description}>راحت تر رفت و آمد کنید</IranSansText>
+                <IranSansText fontWeight="Medium" style={styles.description}>و پول کمتری خرج کنید</IranSansText>
             </View>
             <View style={styles.buttonContainer}>
                 <LandingButton title={'ورود به برنامه'} onPress={this._onSubmit}/>

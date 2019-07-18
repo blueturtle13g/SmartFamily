@@ -71,6 +71,12 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>iran_sans.ttf</string>
+		<string>iranSans.ttf</string>
+		<string>iranSansBold.ttf</string>
+		<string>iranSansLight.ttf</string>
+		<string>iranSansMedium.ttf</string>
+		<string>iranSansUltraLight.ttf</string>
 	</array>
 </dict>
 </plist>

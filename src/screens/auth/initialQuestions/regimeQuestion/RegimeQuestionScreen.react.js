@@ -1,16 +1,12 @@
 import React from 'react';
-import {
-  TouchableOpacity,
-  Text,
-  View,
-  Image,
-} from 'react-native';
+import { View } from 'react-native';
 import styles from './RegimeQuestionScreen.style';
 import axios from 'axios';
 import LandingWrapper from 'SmartFamily/src/components/landing/landingWrapper';
 import LandingButton from 'SmartFamily/src/components/landing/landingButton';
 import Dots from 'SmartFamily/src/components/questions/dots';
 import CheckBoxes from 'SmartFamily/src/components/questions/checkBoxes';
+import IranSansText from 'SmartFamily/src/components/iranSansText';
 
 export default class RegimeQuestionScreen extends React.Component {
   state = {
@@ -34,9 +30,12 @@ export default class RegimeQuestionScreen extends React.Component {
   render() {
     const { regimes } = this.state;
     return (
-        <LandingWrapper onBackPress={()=>this.props.navigation.goBack()}>
+        <LandingWrapper
+          onBackPress={()=>this.props.navigation.goBack()}
+          image={'regime'}
+        >
             <View style={styles.questionContainer}>
-                <Text style={styles.question}>خانواده شما چه نوع رژیم غذایی دارد؟!</Text>
+                <IranSansText style={styles.question}>خانواده شما چه نوع رژیم غذایی دارد؟!</IranSansText>
                 <CheckBoxes
                   onUpdate={this._onUpdateRegimes}
                   regimes={regimes}

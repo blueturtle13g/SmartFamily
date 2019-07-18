@@ -7,7 +7,7 @@ export default StyleSheet.create({
     flex: 1,
   },
   inputContainer:{
-    flex: 1,
+    flex: 2,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -20,12 +20,4 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-  inputDescription:{
-    textAlign: 'left',
-    color: '#fff',
-    width: '76%',
-    textAlign: 'right',
-    marginTop: 3,
-    fontSize: 13,
-  }
 });

@@ -10,8 +10,11 @@ export default ({keyboardOpen, children, onBackPress})=>{
             style={{flex: 1}}
             colors={Colors.landingColors}
         >
-            <FamilyTitleImage keyboardOpen={keyboardOpen} onBackPress={onBackPress}/>
-            <View style={{flex: 1}}>
+            <FamilyTitleImage
+                keyboardOpen={keyboardOpen}
+                onBackPress={onBackPress}
+            />
+            <View style={{flex: 1, marginTop: 15}}>
                 {children}
             </View>
         </LinearGradient>

@@ -4,9 +4,9 @@ import {
     TextInput,
     Image,
     StyleSheet,
-    Text,
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import IranSansText from 'SmartFamily/src/components/iranSansText';
 
 export default ({
     keyboardType,
@@ -15,58 +15,75 @@ export default ({
     placeholder,
     labelText,
     secureTextEntry,
+    inputDescription,
 })=>{
     return (
-        <View style={styles.inputWrapper}>
-            <TextInput
-                value={value}
-                onChangeText={onChangeText}
-                style={styles.textInput}
-                placeholder={placeholder}
-                keyboardType={keyboardType}
-                secureTextEntry={secureTextEntry}
-            />
-            <View style={styles.inputLabel}>
-                <Text style={styles.labelText}>{labelText}</Text>
-                {keyboardType==="phone-pad" ?
-                    <FontAwesome
-                        size={30}
-                        name={'mobile-phone'}
-                        style={styles.labelIcon}
-                    />
-                    :
-                    <Image
-                        source={require('SmartFamily/assets/lockIcon.png')}
-                        style={styles.lockIcon}    
-                    />
-                }
+        <View style={styles.mainContainer}>
+            <View style={styles.inputWrapper}>
+                <TextInput
+                    value={value}
+                    onChangeText={onChangeText}
+                    style={styles.textInput}
+                    placeholder={placeholder}
+                    keyboardType={keyboardType}
+                    secureTextEntry={secureTextEntry}
+                />
+                <View style={styles.border}/>
+                <View style={styles.inputLabel}>
+                    <IranSansText style={styles.labelText}>{labelText}</IranSansText>
+                    {keyboardType==="phone-pad" ?
+                        <FontAwesome
+                            size={30}
+                            name={'mobile-phone'}
+                            style={styles.labelIcon}
+                        />
+                        :
+                        <Image
+                            source={require('SmartFamily/assets/images/lockIcon.png')}
+                            style={styles.lockIcon}    
+                        />
+                    }
+                </View>
             </View>
+            <IranSansText
+              fontWeight="Light"
+              style={styles.inputDescription}
+            >
+                {inputDescription}
+            </IranSansText>
         </View>
     )
 };
 
 const styles = StyleSheet.create({
+    mainContainer:{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'flex-end'
+    },
     inputWrapper:{
         textAlign: 'center',
-        paddingVertical: 9,
         width: '85%',
         height: 38,
-        borderRadius: 3,
+        borderRadius: 6,
         backgroundColor: '#fff',
         flexDirection: 'row',
+        alignItems: 'center',
       },
       textInput:{
-        // backgroundColor: '#ccc',
-        height: '100%',
+        fontFamily: 'iranSans',
         width: '65%',
         textAlign: 'right',
         textAlignVertical: 'center',
-        padding: 0,
+        paddingBottom: 5,
         paddingRight: 15,
-        borderRightWidth: 1,
-        borderColor: '#000',
-        fontWeight: 'bold',
-    
+        fontSize: 12,
+      },
+      border:{
+        width: 1,
+        height: '70%',
+        backgroundColor: '#000',
+        borderRadius: 5,
       },
       inputLabel:{
         height: '100%',
@@ -74,6 +91,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'flex-end',
         alignItems: 'center',
+      },
+      labelText:{
+          fontSize: 11,
       },
       lockIcon:{
           width: 20,
@@ -84,4 +104,11 @@ const styles = StyleSheet.create({
       labelIcon:{
           marginHorizontal: 6,
       },
+      inputDescription:{
+        color: '#fff',
+        width: '76%',
+        marginTop: 3,
+        marginRight: 20,
+        fontSize: 13,
+      }
 })

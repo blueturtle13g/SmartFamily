@@ -39,19 +39,20 @@ class PhoneNumberScreen extends React.Component {
       <LandingWrapper keyboardOpen={keyboardOpen}>
         <View style={styles.inputContainer}>
           <InputWithLabel
-            value={convertToPersianNumbers(phoneNumber)}
+            value={phoneNumber}
             onChangeText={phoneNumber=>this.setState({phoneNumber})}
-            placeholder={convertToPersianNumbers("09000000000")}
+            placeholder={"09000000000"}
             keyboardType="phone-pad"
             labelText="شماره موبایل"
           />
+        {!keyboardOpen &&<View style={{flex: 1}}/>}
         </View>
         {!keyboardOpen &&(
           <View style={styles.progressBarContainer}>
             <ProgressBar percentage={35}/>
           </View>
         )}
-        <View style={[styles.buttonContainer, keyboardOpen &&{flex: .5}]}>
+        <View style={[styles.buttonContainer]}>
           {phoneNumber.length===11 &&(<LandingButton title={'ثبت شماره موبایل'} onPress={this._onSubmit}/>)}
         </View>
       </LandingWrapper>

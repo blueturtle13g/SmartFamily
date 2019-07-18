@@ -4,9 +4,9 @@ import {
     Image,
     TouchableOpacity,
     StyleSheet,
-    Text
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import IranSansText from 'SmartFamily/src/components/iranSansText';
 
 export default ({
     regimes,
@@ -20,11 +20,11 @@ export default ({
                 activeOpacity={.8}
             >
                 <Image
-                    source={require('SmartFamily/assets/mobileIcon.png')}
+                    source={require('SmartFamily/assets/images/allFoods.png')}
                     style={styles.checkBoxImage}
                 />
                 <View style={styles.textCheckIcon}>
-                    <Text style={styles.text}>همه غذاها</Text>
+                    <IranSansText style={styles.text}>همه غذاها</IranSansText>
                     <MaterialCommunityIcons
                         name={'check-box-outline'}
                         color={regimes.includes(0) ? 'green' : '#eee'}
@@ -39,11 +39,11 @@ export default ({
                 activeOpacity={.8}
             >
                 <Image
-                    source={require('SmartFamily/assets/mobileIcon.png')}
+                    source={require('SmartFamily/assets/images/diet.png')}
                     style={styles.checkBoxImage}
                 />
                 <View style={styles.textCheckIcon}>
-                    <Text style={styles.text}>رژیم لاغری</Text>
+                    <IranSansText style={styles.text}>رژیم لاغری</IranSansText>
                     <MaterialCommunityIcons
                         name={'check-box-outline'}
                         color={regimes.includes(1) ? 'green' : '#eee'}
@@ -58,11 +58,11 @@ export default ({
                 activeOpacity={.8}
             >
                 <Image
-                    source={require('SmartFamily/assets/mobileIcon.png')}
+                    source={require('SmartFamily/assets/images/veg.png')}
                     style={styles.checkBoxImage}
                 />
                 <View style={styles.textCheckIcon}>
-                    <Text style={styles.text}>سبزی خواری</Text>
+                    <IranSansText style={styles.text}>سبزی خواری</IranSansText>
                     <MaterialCommunityIcons
                         name={'check-box-outline'}
                         color={regimes.includes(2) ? 'green' : '#eee'}
@@ -79,10 +79,11 @@ const styles = StyleSheet.create({
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-around',
+
     },
     checkBoxImage:{
-        height: '75%',
-        width: '100%',
+        height: 40,
+        width: 40,
         resizeMode: 'contain',
     },
     text:{
@@ -92,6 +93,9 @@ const styles = StyleSheet.create({
     checkboxContainer:{
         height: 80,
         width: 90,
+        justifyContent: 'center',
+        alignItems: 'center',
+
     },
     textCheckIcon:{
         marginTop: 3,

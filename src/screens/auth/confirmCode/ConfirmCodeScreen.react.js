@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  View, Text,
-} from 'react-native';
+import { View } from 'react-native';
 import styles from './ConfirmCodeScreen.style';
 import axios from 'axios';
 import { BASE_URL } from 'SmartFamily/src/constants/Api';
@@ -10,6 +8,7 @@ import ProgressBar from 'SmartFamily/src/components/landing/progressBar';
 import LandingWrapper from 'SmartFamily/src/components/landing/landingWrapper';
 import LandingButton from 'SmartFamily/src/components/landing/landingButton';
 import { connect } from 'react-redux';
+import IranSansText from 'SmartFamily/src/components/iranSansText';
 
 class ConfirmCodeScreen extends React.Component {
   state = {
@@ -35,7 +34,10 @@ class ConfirmCodeScreen extends React.Component {
     const { keyboardOpen } = this.props;
     const { loading, confirmCode } = this.state;
     return(
-      <LandingWrapper keyboardOpen={keyboardOpen} onBackPress={()=>this.props.navigation.goBack()}>
+      <LandingWrapper
+        keyboardOpen={keyboardOpen}
+        onBackPress={()=>this.props.navigation.goBack()}
+      >
         <View style={styles.inputContainer}>
           <InputWithLabel
             secureTextEntry
@@ -46,8 +48,9 @@ class ConfirmCodeScreen extends React.Component {
             keyboardType="number-pad"
             onChangeText={confirmCode=>this.setState({confirmCode})}
             labelText="کد تایید"
+            inputDescription="کد تایید ۵ رقمی پیامک شده را وارد کنید."
           />
-          <Text style={styles.inputDescription}>کد تایید ۵ رقمی پیامک شده را وارد کنید.</Text>
+          <View style={{flex: 1}}/>
         </View>
         {!keyboardOpen &&(
           <View style={styles.progressBarContainer}>

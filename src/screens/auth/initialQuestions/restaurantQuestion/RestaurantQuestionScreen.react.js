@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  ActivityIndicator,
-  Text,
-  View,
-  TextInput,
-} from 'react-native';
+import { View } from 'react-native';
 import styles from './RestaurantQuestionScreen.style';
 import axios from 'axios';
 import LandingWrapper from 'SmartFamily/src/components/landing/landingWrapper';
@@ -12,6 +7,7 @@ import LandingButton from 'SmartFamily/src/components/landing/landingButton';
 import Dots from 'SmartFamily/src/components/questions/dots';
 import QuestionInput from 'SmartFamily/src/components/questions/questionInput';
 import { connect } from 'react-redux';
+import IranSansText from 'SmartFamily/src/components/iranSansText';
 
 class RestaurantQuestionScreen extends React.Component {
   state = {
@@ -26,9 +22,16 @@ class RestaurantQuestionScreen extends React.Component {
     const { keyboardOpen } = this.props;
     const { count } = this.state;
     return (
-        <LandingWrapper keyboardOpen={keyboardOpen}>
+        <LandingWrapper
+          keyboardOpen={keyboardOpen}
+          image={'restaurant'}
+        >
             <View style={styles.questionContainer}>
-                <Text style={styles.question}>چند مرتبه در هفته به رستوران می روید؟!</Text>
+              <View style={styles.ed}>
+                <IranSansText style={styles.question}>
+                  چند مرتبه در هفته به رستوران می روید؟!
+                </IranSansText>
+              </View>
                 <QuestionInput
                   value={count}
                   placeholder={'چند مرتبه'}

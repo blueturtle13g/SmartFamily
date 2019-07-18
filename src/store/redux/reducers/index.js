@@ -5,7 +5,6 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action)=>{
-    console.log('action: ', action);
     switch(action.type){
         case UPDATE_PROP:
             return{...state, [action.key]: action.value}

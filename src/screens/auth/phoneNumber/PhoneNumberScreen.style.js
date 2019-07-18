@@ -6,8 +6,7 @@ export default StyleSheet.create({
     flex: 1,
   },
   inputContainer:{
-    flex: 1,
-    justifyContent: 'center',
+    flex: 2,
     alignItems: 'center',
   },
   progressBarContainer:{
@@ -18,5 +17,6 @@ export default StyleSheet.create({
   buttonContainer:{
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
   },
 });

@@ -13,7 +13,6 @@ export default StyleSheet.create({
   title:{
     fontSize: 20,
     color: '#fff',
-    fontWeight: 'bold',
     marginBottom: 10,
   },
   familyImage:{
@@ -22,23 +21,18 @@ export default StyleSheet.create({
       resizeMode: 'contain',
   },
   questionContainer:{
-    justifyContent: 'space-between',
-    paddingVertical: 15,
-    alignItems: 'center',
-    flex: 1.8,
+      justifyContent: 'space-between',
+      paddingVertical: 15,
+      alignItems: 'center',
+      flex: 1.8,
   },
   question:{
-    marginVertical: 2,
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#fff',
-  },
-  description:{
-    fontWeight: 'normal',
-    fontSize: 17,
+      marginVertical: 2,
+      fontSize: 18,
+      color: '#fff',
   },
   buttonContainer:{
-    flex: 1,
+      flex: 1,
   },
   dotsContainer:{
     flex: .8,
@@ -46,4 +40,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
   },
+  checkboxesContainer:{
+    flex: 2,
+  }
 });

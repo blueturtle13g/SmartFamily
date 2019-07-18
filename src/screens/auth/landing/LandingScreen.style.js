@@ -11,41 +11,31 @@ export default StyleSheet.create({
   },
   titleContainer:{
       flex: .8,
-    //   backgroundColor: 'yellow',
       justifyContent: 'flex-end',
       alignItems: 'center',
-  },
-  title:{
-    fontSize: 20,
-    color: '#fff',
-    fontWeight: 'bold',
-    marginBottom: 10,
   },
   familyImage:{
       flex: 2.2,
       width: '100%',
-    //   backgroundColor: 'blue',
       resizeMode: 'contain',
   },
   descriptionContainer:{
       justifyContent: 'center',
       alignItems: 'center',
-      flex: 2,
-    //   backgroundColor: 'pink',
+      flex: 3,
   },
   description:{
       marginVertical: 2,
-      fontSize: 17,
+      fontSize: 14,
       color: '#fff',
   },
   mainDescription:{
-    marginBottom: 15,
-    fontWeight: 'bold',
+    marginBottom: 10,
+    fontSize: 16 ,
   },
   buttonContainer:{
-      flex: .8,
-    //   backgroundColor: 'green',
-      paddingTop: 5,
+      flex: 1,
+      justifyContent: 'center',
   },
 
 });

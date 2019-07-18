@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  Text,
-  View,
-} from 'react-native';
+import { View } from 'react-native';
 import styles from './PicnicQuestionScreen.style';
 import axios from 'axios';
 import LandingWrapper from 'SmartFamily/src/components/landing/landingWrapper';
@@ -10,6 +7,7 @@ import LandingButton from 'SmartFamily/src/components/landing/landingButton';
 import Dots from 'SmartFamily/src/components/questions/dots';
 import QuestionInput from 'SmartFamily/src/components/questions/questionInput';
 import { connect } from 'react-redux';
+import IranSansText from 'SmartFamily/src/components/iranSansText';
 
 class PicnicQuestionScreen extends React.Component {
   state = {
@@ -27,11 +25,12 @@ class PicnicQuestionScreen extends React.Component {
         <LandingWrapper
           keyboardOpen={keyboardOpen}
           onBackPress={()=>this.props.navigation.goBack()}
+          image={'picnic'}
         >
             <View style={styles.questionContainer}>
-              <Text style={styles.question}>چند مرتبه در هفته برنامه تفریحی دارید؟!</Text>
+              <IranSansText style={styles.question}>چند مرتبه در هفته برنامه تفریحی دارید؟!</IranSansText>
               {!keyboardOpen &&(
-                <Text style={[styles.question, styles.description]}>تفریحاتی شامل شهربازی، سینما، تور و ...</Text>
+                <IranSansText style={[styles.question, styles.description]}>تفریحاتی شامل شهربازی، سینما، تور و ...</IranSansText>
               )}
               <QuestionInput
                 value={count}

@@ -12,10 +12,6 @@ export default StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
   },
-  inputContainer:{
-    width: '100%',
-    alignItems: 'center',
-  },
   progressBarContainer:{
     flex: 1,
     justifyContent: 'center',
@@ -30,6 +26,6 @@ export default StyleSheet.create({
     color: '#fff',
     width: '76%',
     textAlign: 'right',
-    fontSize: 11,
+    fontSize: 10,
   }
 });

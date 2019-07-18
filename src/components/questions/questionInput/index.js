@@ -22,7 +22,11 @@ const styles = StyleSheet.create({
     input:{
         width: '85%',
         height: 38,
+        borderRadius: 6,
+        padding: 0,
+        textAlignVertical: 'center',
         backgroundColor: '#fff',
         textAlign: 'center',
+        fontFamily: 'iranSans',
     },
 })

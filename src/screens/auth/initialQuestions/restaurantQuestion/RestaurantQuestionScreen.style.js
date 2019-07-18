@@ -13,7 +13,6 @@ export default StyleSheet.create({
   title:{
     fontSize: 20,
     color: '#fff',
-    fontWeight: 'bold',
     marginBottom: 10,
   },
   familyImage:{
@@ -30,11 +29,11 @@ export default StyleSheet.create({
   question:{
       marginVertical: 2,
       fontSize: 18,
-      fontWeight: 'bold',
       color: '#fff',
   },
   buttonContainer:{
       flex: 1,
+      // backgroundColor: 'red',
   },
   dotsContainer:{
     flex: .8,
@@ -42,7 +41,4 @@ export default StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
   },
-  checkboxesContainer:{
-    flex: 2,
-  }
 });
