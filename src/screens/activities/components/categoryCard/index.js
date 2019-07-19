@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     mainContainer:{
         borderRadius: 3,
         backgroundColor: '#fff',
-        width: 145,
+        width: '47%',
         height: 175,
         marginVertical: 8,
         borderColor: Colors.main,

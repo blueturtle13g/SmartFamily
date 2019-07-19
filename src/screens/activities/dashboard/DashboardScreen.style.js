@@ -6,7 +6,7 @@ export default StyleSheet.create({
     },
     categoriesContainer:{
         paddingTop: 10,
-        width: '80%',
+        width: '85%',
         alignSelf: 'center',
         flexDirection: 'row',
         flexWrap: 'wrap',

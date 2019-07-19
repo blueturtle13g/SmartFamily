@@ -7,7 +7,7 @@ export default StyleSheet.create({
     },
     membersContainer:{
         paddingTop: 10,
-        width: '80%',
+        width: '85%',
         alignSelf: 'center',
         // backgroundColor: 'pink',
         flexDirection: 'row',
