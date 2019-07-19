@@ -6,25 +6,30 @@ import {
 import ProfileScreen from 'SmartFamily/src/screens/profile/ProfileScreen.react';
 import ReportsScreen from 'SmartFamily/src/screens/reports/ReportsScreen.react';
 import ActivitiesScreen from 'SmartFamily/src/screens/activities/ActivitiesScreen.react';
-import TabBar from 'SmartFamily/src/components/navigation/TabBar';
+import DashboardScreen from 'SmartFamily/src/screens/activities/dashboard/DashboardScreen.react';
+import TabBar from 'SmartFamily/src/components/navigation/tabBar';
 import Colors from 'SmartFamily/src/constants/Colors';
 import { Image } from 'react-native';
+import HeaderLeft from 'SmartFamily/src/components/navigation/headerLeft';
 
 const stackNavigationConfig = {
   defaultNavigationOptions: {
     headerStyle: {
-      backgroundColor: Colors.appColor,
+      backgroundColor: Colors.main,
       height: 80,
     },
-    headerLeft:(<Image
-      source={require('SmartFamily/assets/images/ad.png')}
-      style={{
-        width: 20,
-        height: 25,
-        resizeMode: 'contain',
-        marginLeft: 24,
-      }}
-    />)
+    headerLeft:(
+      <HeaderLeft>
+        <Image
+          source={require('SmartFamily/assets/images/ad.png')}
+          style={{
+            width: 20,
+            height: 25,
+            resizeMode: 'contain',
+          }}
+        />
+      </HeaderLeft>
+    )
   },
 };
 
@@ -34,7 +39,10 @@ const ProfileStack = createStackNavigator(
 );
 
 const ActivitiesStack = createStackNavigator(
-  {ActivitiesScreen},
+  {
+    ActivitiesScreen,
+    DashboardScreen,
+  },
   stackNavigationConfig
 );
 

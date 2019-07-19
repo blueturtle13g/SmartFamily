@@ -3,10 +3,10 @@ import { View } from 'react-native';
 import styles from './PasswordScreen.style';
 import axios from 'axios';
 import { BASE_URL } from 'SmartFamily/src/constants/Api';
-import InputWithLabel from 'SmartFamily/src/components/landing/inputWithLabel';
-import ProgressBar from 'SmartFamily/src/components/landing/progressBar';
-import LandingWrapper from 'SmartFamily/src/components/landing/landingWrapper';
-import LandingButton from 'SmartFamily/src/components/landing/landingButton';
+import InputWithLabel from 'SmartFamily/src/components/inputWithLabel';
+import ProgressBar from '../components/progressBar';
+import LandingWrapper from 'SmartFamily/src/components/landingWrapper';
+import MainButton from 'SmartFamily/src/components/buttons/main';
 import { connect } from 'react-redux';
 import IranSansText from 'SmartFamily/src/components/iranSansText';
 
@@ -76,7 +76,7 @@ class PasswordScreen extends React.Component {
           </View>
         )}
         <View style={[styles.buttonContainer, keyboardOpen &&{flex: .7}]}>
-          {isPasswordValid &&(<LandingButton title={'ورود به اسمارت فمیلی'} onPress={this._onSubmit}/>)}
+          {isPasswordValid &&(<MainButton title={'ورود به اسمارت فمیلی'} onPress={this._onSubmit}/>)}
         </View>
       </LandingWrapper>
     );

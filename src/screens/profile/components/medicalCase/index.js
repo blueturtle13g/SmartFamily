@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         right: 8,
     },
     activeButton:{
-        backgroundColor: Colors.appColor,
+        backgroundColor: Colors.main,
         borderWidth: 0,
         elevation: 3,
     },

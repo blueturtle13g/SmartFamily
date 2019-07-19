@@ -3,10 +3,10 @@ import { View } from 'react-native';
 import styles from './ConfirmCodeScreen.style';
 import axios from 'axios';
 import { BASE_URL } from 'SmartFamily/src/constants/Api';
-import InputWithLabel from 'SmartFamily/src/components/landing/inputWithLabel';
-import ProgressBar from 'SmartFamily/src/components/landing/progressBar';
-import LandingWrapper from 'SmartFamily/src/components/landing/landingWrapper';
-import LandingButton from 'SmartFamily/src/components/landing/landingButton';
+import InputWithLabel from 'SmartFamily/src/components/inputWithLabel';
+import ProgressBar from '../components/progressBar';
+import LandingWrapper from 'SmartFamily/src/components/landingWrapper';
+import MainButton from 'SmartFamily/src/components/buttons/main';
 import { connect } from 'react-redux';
 import IranSansText from 'SmartFamily/src/components/iranSansText';
 
@@ -57,7 +57,7 @@ class ConfirmCodeScreen extends React.Component {
           </View>
         )}
         <View style={[styles.buttonContainer, keyboardOpen &&{justifyContent: 'center'}]}>
-          {confirmCode.length===5 &&(<LandingButton title={'ثبت کد تایید'} onPress={this._onSubmit}/>)}
+          {confirmCode.length===5 &&(<MainButton title={'ثبت کد تایید'} onPress={this._onSubmit}/>)}
         </View>
       </LandingWrapper>
     );

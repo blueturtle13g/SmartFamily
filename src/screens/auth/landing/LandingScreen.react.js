@@ -7,8 +7,8 @@ import {
 } from 'react-native';
 import styles from './LandingScreen.style';
 import axios from 'axios';
-import LandingWrapper from 'SmartFamily/src/components/landing/landingWrapper';
-import LandingButton from 'SmartFamily/src/components/landing/landingButton';
+import LandingWrapper from 'SmartFamily/src/components/landingWrapper';
+import MainButton from 'SmartFamily/src/components/buttons/main';
 import { KEYBOARD_OPEN } from 'SmartFamily/src/store/redux/types';
 import { updateProp } from 'SmartFamily/src/store/redux/actions';
 import { connect } from 'react-redux';
@@ -87,7 +87,7 @@ class LandingScreen extends React.Component {
                 <IranSansText fontWeight="Medium" style={styles.description}>و پول کمتری خرج کنید</IranSansText>
             </View>
             <View style={styles.buttonContainer}>
-                <LandingButton title={'ورود به برنامه'} onPress={this._onSubmit}/>
+                <MainButton title={'ورود به برنامه'} onPress={this._onSubmit}/>
             </View>
         </LandingWrapper>
     );

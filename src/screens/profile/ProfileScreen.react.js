@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styles from './ProfileScreen.style';
 import { View, ScrollView, StatusBar } from 'react-native';
 import IranSansText from 'SmartFamily/src/components/iranSansText';
-import DrawerButton from 'SmartFamily/src/components/navigation/DrawerButton';
+import HeaderRight from 'SmartFamily/src/components/navigation/headerRight';
 import { NavigationEvents } from 'react-navigation';
 import { ACTIVE_STACK, PROFILE_STACK } from 'SmartFamily/src/store/redux/types';
 import { updateProp } from 'SmartFamily/src/store/redux/actions';
@@ -11,6 +11,7 @@ import EmptyFamily from './components/emptyFamily';
 import SettingModal from './components/settingModal';
 import MemberCard from './components/memberCard';
 import AddCard from './components/addCard';
+import Colors from 'SmartFamily/src/constants/Colors';
 
 const MEMBERS = [
     {
@@ -42,7 +43,7 @@ class ProfileScreen extends Component {
 
     static navigationOptions = ({ navigation }) => {
         return{
-            headerRight: <DrawerButton
+            headerRight: <HeaderRight
                 title={'خوش آمدید'}
                 onPress={()=>{}}
             />
@@ -56,7 +57,7 @@ class ProfileScreen extends Component {
                 <NavigationEvents
                     onWillFocus={() =>this.props.updateProp(ACTIVE_STACK, PROFILE_STACK)}
                 />
-                <StatusBar backgroundColor={'#1A98A7'}/>
+                <StatusBar backgroundColor={Colors.statusbar}/>
                 
                 <View style={styles.membersContainer}>
                     <AddCard

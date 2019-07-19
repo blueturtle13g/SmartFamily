@@ -3,7 +3,7 @@ import {
     View,
     StyleSheet,
 } from 'react-native';
-import InputWithLabel from 'SmartFamily/src/components/landing/inputWithLabel';
+import InputWithLabel from 'SmartFamily/src/components/inputWithLabel';
 import Border from 'SmartFamily/src/components/border';
 import ModalHeader from '../modalHeader';
 

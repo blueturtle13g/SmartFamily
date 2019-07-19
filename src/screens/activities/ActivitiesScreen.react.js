@@ -6,30 +6,27 @@ import { NavigationEvents } from 'react-navigation';
 import { ACTIVE_STACK, ACTIVITIES_STACK } from 'SmartFamily/src/store/redux/types';
 import { updateProp } from 'SmartFamily/src/store/redux/actions';
 import { connect } from 'react-redux';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import NutritionBar from 'SmartFamily/src/components/nutritionBar';
-import StarBorder from 'SmartFamily/src/components/border/star';
-import CrementButton from 'SmartFamily/src/components/crementButton';
-import NutritionControl from 'SmartFamily/src/components/nutritionControl';
+import Colors from 'SmartFamily/src/constants/Colors';
 
-class ReportsScreen extends Component {
+class ActivitiesScreen extends Component {
 
     render() {
+        const { navigate } = this.props.navigation;
         return (
             <View style={styles.mainContainer}>
                 <NavigationEvents
                     onWillFocus={() =>this.props.updateProp(ACTIVE_STACK, ACTIVITIES_STACK)}
                 />
-                <StatusBar backgroundColor={'#1A98A7'}/>
-                <StarBorder/>
-                <NutritionControl
-                    title={'۱ کیلو ۱۰۰۰۰ تومان'}
-                    minusActive={false}
-                    plusActive={true}
-                />
+                <StatusBar backgroundColor={Colors.statusbar}/>
+                <TouchableOpacity onPress={()=>navigate('DashboardScreen')}>
+                    <IranSansText>
+                        dashboard
+                    </IranSansText>
+                </TouchableOpacity>
+
             </View>
         )
     }
 }
 
-export default connect(null,{updateProp})(ReportsScreen)
+export default connect(null,{updateProp})(ActivitiesScreen)

@@ -6,13 +6,14 @@ import { NavigationEvents } from 'react-navigation';
 import { ACTIVE_STACK, REPORTS_STACK } from 'SmartFamily/src/store/redux/types';
 import { updateProp } from 'SmartFamily/src/store/redux/actions';
 import { connect } from 'react-redux';
-import DrawerButton from 'SmartFamily/src/components/navigation/DrawerButton';
+import HeaderRight from 'SmartFamily/src/components/navigation/headerRight';
+import Colors from 'SmartFamily/src/constants/Colors';
 
 class ReportsScreen extends Component {
 
     static navigationOptions = ({ navigation }) => {
         return{
-            headerRight: <DrawerButton
+            headerRight: <HeaderRight
                 title={'گزارش مخارج'}
                 onPress={()=>{}}
             />
@@ -25,7 +26,7 @@ class ReportsScreen extends Component {
                 <NavigationEvents
                     onWillFocus={() =>this.props.updateProp(ACTIVE_STACK, REPORTS_STACK)}
                 />
-                <StatusBar backgroundColor={'#1A98A7'}/>
+                <StatusBar backgroundColor={Colors.statusbar}/>
             </View>
         )
     }

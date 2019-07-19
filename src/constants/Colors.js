@@ -1,4 +1,4 @@
-const appColor = '#27A6B5';
+const main = '#27A6B5';
 
 export default {
   black1: '#000000',
@@ -38,6 +38,7 @@ export default {
   warningBackground: '#EAEB5E',
   warningText: '#666804',
   yellow1: '#e8bd26',
-  landingColors: [appColor, '#71C8D1'],
-  appColor,
+  landingColors: [main, '#71C8D1'],
+  main,
+  statusbar: '#1A98A7',
 };

@@ -9,9 +9,9 @@ import PhoneNumberScreen from 'SmartFamily/src/screens/auth/phoneNumber/PhoneNum
 import ConfirmCodeScreen from 'SmartFamily/src/screens/auth/confirmCode/ConfirmCodeScreen.react';
 import PasswordScreen from 'SmartFamily/src/screens/auth/password/PasswordScreen.react';
 import LandingScreen from 'SmartFamily/src/screens/auth/landing/LandingScreen.react';
-import RestaurantQuestionScreen from 'SmartFamily/src/screens/auth/initialQuestions/restaurantQuestion/RestaurantQuestionScreen.react';
-import PicnicQuestionScreen from 'SmartFamily/src/screens/auth/initialQuestions/picnicQuestion/PicnicQuestionScreen.react';
-import RegimeQuestionScreen from 'SmartFamily/src/screens/auth/initialQuestions/regimeQuestion/RegimeQuestionScreen.react';
+import RestaurantQuestionScreen from 'SmartFamily/src/screens/initialQuestions/restaurantQuestion/RestaurantQuestionScreen.react';
+import PicnicQuestionScreen from 'SmartFamily/src/screens/initialQuestions/picnicQuestion/PicnicQuestionScreen.react';
+import RegimeQuestionScreen from 'SmartFamily/src/screens/initialQuestions/regimeQuestion/RegimeQuestionScreen.react';
 
 import MainTabNavigator from './MainTabNavigator';
 

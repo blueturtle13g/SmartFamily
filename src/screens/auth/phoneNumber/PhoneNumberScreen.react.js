@@ -3,11 +3,10 @@ import { View } from 'react-native';
 import styles from './PhoneNumberScreen.style';
 import axios from 'axios';
 import { BASE_URL } from 'SmartFamily/src/constants/Api';
-import LandingWrapper from 'SmartFamily/src/components/landing/landingWrapper';
-import LandingButton from 'SmartFamily/src/components/landing/landingButton';
-import { convertToPersianNumbers } from 'SmartFamily/src/utils';
-import InputWithLabel from 'SmartFamily/src/components/landing/inputWithLabel';
-import ProgressBar from 'SmartFamily/src/components/landing/progressBar';
+import LandingWrapper from 'SmartFamily/src/components/landingWrapper';
+import MainButton from 'SmartFamily/src/components/buttons/main';
+import InputWithLabel from 'SmartFamily/src/components/inputWithLabel';
+import ProgressBar from '../components/progressBar';
 import { connect } from 'react-redux';
 
 class PhoneNumberScreen extends React.Component {
@@ -53,7 +52,7 @@ class PhoneNumberScreen extends React.Component {
           </View>
         )}
         <View style={[styles.buttonContainer]}>
-          {phoneNumber.length===11 &&(<LandingButton title={'ثبت شماره موبایل'} onPress={this._onSubmit}/>)}
+          {phoneNumber.length===11 &&(<MainButton title={'ثبت شماره موبایل'} onPress={this._onSubmit}/>)}
         </View>
       </LandingWrapper>
     )

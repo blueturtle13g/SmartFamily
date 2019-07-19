@@ -61,13 +61,14 @@ export default function index({
 
 const styles = StyleSheet.create({
     mainContainer:{
-        borderWidth: .2,
-        borderRadius: 1,
+        borderRadius: 3,
         backgroundColor: '#fff',
         width: 145,
         height: 175,
         marginVertical: 8,
-        borderColor: Colors.appColor,
+        borderColor: Colors.main,
+        overflow: 'hidden',
+        elevation: 2,
     },
     imageContainer:{
         height: '68%',

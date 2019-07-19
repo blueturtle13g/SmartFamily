@@ -9,7 +9,7 @@ export default function index({onPress}) {
             <AntDesign
                 name={'pluscircle'}
                 size={37}
-                color={Colors.appColor}
+                color={Colors.main}
             />
         </TouchableOpacity>
     )
@@ -25,6 +25,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: 145,
         height: 175,
-        borderColor: Colors.appColor,
+        borderColor: Colors.main,
     },
 })
