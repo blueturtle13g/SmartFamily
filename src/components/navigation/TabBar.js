@@ -10,7 +10,6 @@ import {
 } from 'SmartFamily/src/store/redux/types';
 
 const TabBar = ({navigation:{navigate}, activeStack})=>{
-    console.log('activeStack: ', activeStack)
     return (
         <View style={styles.mainContainer}>
             <TabIcons navigate={navigate} activeStack={activeStack}/>

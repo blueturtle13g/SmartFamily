@@ -1,3 +1,5 @@
+const appColor = '#27A6B5';
+
 export default {
   black1: '#000000',
   black2: '#030303',
@@ -36,5 +38,6 @@ export default {
   warningBackground: '#EAEB5E',
   warningText: '#666804',
   yellow1: '#e8bd26',
-  landingColors: ['#27A6B5', '#71C8D1'],
+  landingColors: [appColor, '#71C8D1'],
+  appColor,
 };

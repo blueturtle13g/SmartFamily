@@ -40,7 +40,7 @@ class PhoneNumberScreen extends React.Component {
         <View style={styles.inputContainer}>
           <InputWithLabel
             value={phoneNumber}
-            onChangeText={phoneNumber=>this.setState({phoneNumber})}
+            onUpdate={phoneNumber=>this.setState({phoneNumber})}
             placeholder={"09000000000"}
             keyboardType="phone-pad"
             labelText="شماره موبایل"

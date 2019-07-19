@@ -1,35 +1,22 @@
 import React from 'react';
+import { TouchableOpacity, StyleSheet } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import IranSansText from 'SmartFamily/src/components/iranSansText';
+import Colors from 'SmartFamily/src/constants/Colors';
 
-export default ({onPress})=>{
+export default function index({onPress}) {
     return (
-        <View style={styles.mainContainer}>
-            <TouchableOpacity onPress={onPress} style={styles.card}>
-                <AntDesign
-                    name={'pluscircle'}
-                    size={37}
-                    color={'#27A6B5'}
-                />
-            </TouchableOpacity>
-            <IranSansText style={styles.mainText}>
-                شما هنوز مشخصات هیچ شخصی را وارد نکرده اید
-            </IranSansText>
-            <IranSansText fontWeight="Light" style={styles.text}>
-                برای استفاده از امکانات مشخصات اعضای خانواده خود را اضافه کنید
-            </IranSansText>
-        </View>
+        <TouchableOpacity onPress={onPress} style={styles.mainContainer}>
+            <AntDesign
+                name={'pluscircle'}
+                size={37}
+                color={Colors.appColor}
+            />
+        </TouchableOpacity>
     )
-};
+}
 
 const styles = StyleSheet.create({
     mainContainer:{
-        width: '100%',
-        alignItems: 'center',
-        marginTop: 20,
-    },
-    card:{
         borderWidth: 1,
         borderStyle: 'dashed',
         borderRadius: 1,
@@ -38,15 +25,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: 145,
         height: 175,
-        borderColor: '#27A6B5'
+        borderColor: Colors.appColor,
     },
-    mainText:{
-        marginTop: 15,
-        marginBottom: 7,
-        color: '#aaa',
-    },
-    text:{
-        fontSize: 12,
-        color: '#aaa',
-    }
 })

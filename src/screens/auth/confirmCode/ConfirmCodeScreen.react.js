@@ -42,11 +42,10 @@ class ConfirmCodeScreen extends React.Component {
           <InputWithLabel
             secureTextEntry
             value={confirmCode}
-            onChangeText={confirmCode=>this.setState({confirmCode})}
+            onUpdate={confirmCode=>this.setState({confirmCode})}
             style={styles.textInput}
             placeholder="*****"
             keyboardType="number-pad"
-            onChangeText={confirmCode=>this.setState({confirmCode})}
             labelText="کد تایید"
             inputDescription="کد تایید ۵ رقمی پیامک شده را وارد کنید."
           />

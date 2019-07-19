@@ -7,46 +7,91 @@ import {
 import styles from './styles';
 import IranSansText from 'SmartFamily/src/components/iranSansText';
 import ModalForm from '../modalForm';
-import MedicalQuestions from '../medicalQuestions';
+import MedicalCases from '../medicalCases';
+
+const INITIAL_STATE = {
+    isAdding: false,
+    name: '',
+    phoneNumber: '',
+    gender: 'woman',
+    age: '',
+    height: '',
+    weight: '',
+    medicalCases: [],
+    activeInput: null,
+};
 
 class SettingModal extends React.Component{
-    state={
-        isAdding: false,
+    state= INITIAL_STATE;
+
+    _onUpdate = (k,v)=>{
+        console.log('k, v: ', k, v)
+        this.setState({[k]: v})
+    }
+
+    _onHide = ()=>{
+        this.setState(INITIAL_STATE);
+        this.props.onHide()
+    }
+
+    _onUpdateCase = cas=>{
+        const { medicalCases } = this.state;
+        this.setState({
+            medicalCases: this.state.medicalCases.includes(cas)
+                ?
+                    medicalCases.filter(thisCase=>thisCase!==cas)
+                :
+                    medicalCases.concat(cas)
+        })
     }
 
     render(){
-        const {isVisible, onHide} = this.props;
-        const { isAdding } = this.state;
+        const {isVisible} = this.props;
+        const {
+            isAdding,
+            medicalCases,
+            activeInput,
+        } = this.state;
 
         return (
             <Modal
                 isVisible={isVisible}
-                onBackButtonPress={onHide}
-                onBackdropPress={onHide}
+                onBackButtonPress={this._onHide}
+                onBackdropPress={this._onHide}
                 style={styles.modal}
             >
+                {isAdding &&(
+                    <View style={styles.backgroundCard}/>
+                )}
                 <View style={styles.mainContainer}>
                     {isAdding ?
                         (
-                            <MedicalQuestions
+                            <MedicalCases
                                 onHide={()=>this.setState({isAdding: false})}
-                                onUpdate={()=>{}}
+                                onUpdateCase={this._onUpdateCase}
+                                cases={medicalCases}
                             />
                         )
                         :
                         (
                             <ModalForm
-                                onUpdate={()=>{}}
-                                onHide={onHide}
+                                onUpdate={this._onUpdate}
+                                onHide={this._onHide}
+                                form={this.state}
+                                activeInput={activeInput}
                             />
                         )
                     }
                     <TouchableOpacity
                         onPress={()=>{
                             if(isAdding){
+                                this._onHide()
                                 this.setState({isAdding: false})
                             }else{
-                                this.setState({isAdding: true})
+
+                                this.setState({
+                                    isAdding: true,
+                                })
                             }
                         }}
                         style={styles.submitButton}

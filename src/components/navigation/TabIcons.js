@@ -11,6 +11,7 @@ import {
 } from 'SmartFamily/src/store/redux/types';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Colors from 'SmartFamily/src/constants/Colors';
 
 export default ({navigate, activeStack})=>{
     return (
@@ -64,7 +65,7 @@ export default ({navigate, activeStack})=>{
 
 const styles = StyleSheet.create({
     activeIcon:{
-        backgroundColor: '#27A6B5',
+        backgroundColor: Colors.appColor,
         elevation: 9,
     },
     iconsContainer:{

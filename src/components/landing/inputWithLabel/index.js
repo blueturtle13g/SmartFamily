@@ -4,6 +4,7 @@ import {
     TextInput,
     Image,
     StyleSheet,
+    Picker,
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -13,11 +14,14 @@ import IranSansText from 'SmartFamily/src/components/iranSansText';
 export default ({
     keyboardType,
     value,
-    onChangeText,
+    onUpdate,
     placeholder,
     labelText,
     secureTextEntry,
     inputDescription,
+    dropDown,
+    onFocus,
+    onBlur,
 })=>{
     const renderIcon = ()=>{
         switch(labelText){
@@ -83,14 +87,32 @@ export default ({
     return (
         <View style={styles.mainContainer}>
             <View style={styles.inputWrapper}>
-                <TextInput
-                    value={value}
-                    onChangeText={onChangeText}
-                    style={styles.textInput}
-                    placeholder={placeholder}
-                    keyboardType={keyboardType}
-                    secureTextEntry={secureTextEntry}
-                />
+                {dropDown ?
+                    (
+                        <Picker
+                            selectedValue={value}
+                            style={{width: '65%'}}
+                            onValueChange={onUpdate}
+                        >
+                            <Picker.Item label="زن" value="woman" />
+                            <Picker.Item label="مرد" value="man" />
+                        </Picker>
+                    )
+                :
+                    (
+                        <TextInput
+                            value={value}
+                            onChangeText={onUpdate}
+                            style={styles.textInput}
+                            placeholder={placeholder}
+                            keyboardType={keyboardType}
+                            secureTextEntry={secureTextEntry}
+                            onFocus={onFocus}
+                            onBlur={onBlur}
+                        />
+                    )
+                }
+
                 <View style={styles.border}/>
                 <View style={styles.inputLabel}>
                     <IranSansText style={styles.labelText}>

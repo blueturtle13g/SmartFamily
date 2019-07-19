@@ -7,16 +7,28 @@ import {
 import Border from 'SmartFamily/src/components/border';
 import ModalHeader from '../modalHeader';
 import IranSansText from 'SmartFamily/src/components/iranSansText';
-import MedicalOption from '../medicalOption';
+import MedicalCase from '../medicalCase';
 
-const medical_options = [
-    'دیابت',
-    'چربی خون',
-    'فشار خون',
-    'ناراحتی قلبی',
+const CASE_OPTIONS = [
+    {
+        title: 'diabet',
+        description: 'دیابت'
+    },
+    {
+        title: 'fatLipid',
+        description: 'چربی خون'
+    },
+    {
+        title: 'bloodPressure',
+        description: 'فشار خون'
+    },
+    {
+        title: 'heartDisease',
+        description: 'ناراحتی قلبی'
+    }
 ];
 
-export default ({onUpdate, onHide})=>{
+export default ({onUpdateCase, onHide, cases})=>{
     return (
         <View style={styles.mainContainer}>
             <ModalHeader
@@ -27,23 +39,25 @@ export default ({onUpdate, onHide})=>{
 
             <View style={styles.switchContainer}>
                 <Switch
-                    value={false}
+                    value={cases.includes('pregnancy')}
                     style={styles.switch}
-                    onValueChange={v=>onUpdate('title', v)}
+                    onValueChange={v=>onUpdateCase('pregnancy')}
                 />
                 <IranSansText
                     style={styles.switchText}
+                    fontWeight="UltraLight"
                 >
                     باردار هستید
                 </IranSansText>
             </View>
 
-            <View style={styles.optionsContainer}>
-                {medical_options.map(option=>(
-                    <MedicalOption
-                        key={option}
-                        onPress={()=>{}}
-                        title={option}
+            <View style={styles.casesContainer}>
+                {CASE_OPTIONS.map(cas=>(
+                    <MedicalCase
+                        checked={cases.includes(cas.title)}
+                        key={cas.title}
+                        onPress={()=>onUpdateCase(cas.title)}
+                        description={cas.description}
                     />
                 ))}
             </View>
@@ -54,18 +68,25 @@ export default ({onUpdate, onHide})=>{
 const styles = StyleSheet.create({
     mainContainer:{
         paddingHorizontal: 20,
-        flex: 1,
     },
     switchContainer:{
         flexDirection: 'row',
         height: 60,
         justifyContent: 'space-between',
         alignItems: 'center',
+        paddingLeft: 10,
+        paddingRight: 15,
     },
-    optionsContainer:{
+    casesContainer:{
         flexDirection: 'row',
-        flex: 1,
         flexWrap: 'wrap',
         justifyContent: 'center',
+        marginBottom: 10,
+    },
+    switch:{
+        color: 'green',
+    },
+    switchText:{
+        color: 'grey',
     }
 })

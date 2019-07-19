@@ -1,21 +1,32 @@
 import { StyleSheet } from 'react-native';
 import { DEVICE_HEIGHT } from 'SmartFamily/src/constants/Layout';
+import Colors from 'SmartFamily/src/constants/Colors';
 
 export default StyleSheet.create({
+    backgroundCard:{
+        height: 30,
+        width: '87%',
+        borderTopRightRadius: 17,
+        borderTopLeftRadius: 17,
+        backgroundColor: '#fff',
+        alignSelf: 'center',
+        elevation: 1,
+    },
     modal:{
         margin: 0,
         justifyContent: 'flex-end',
     },
     mainContainer:{
         backgroundColor: '#fff',
-        height: DEVICE_HEIGHT*.7,
-        borderTopRightRadius: 20,
-        borderTopLeftRadius: 20,
+        minHeight: 150,
+        borderTopRightRadius: 16,
+        borderTopLeftRadius: 16,
+        elevation: 5,
     },
     submitButton:{
         height: 50,
         width: '100%',
-        backgroundColor: '#27A6B5',
+        backgroundColor: Colors.appColor,
         justifyContent: 'center',
         alignItems: 'center',
     },

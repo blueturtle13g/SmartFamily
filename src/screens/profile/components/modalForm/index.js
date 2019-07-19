@@ -7,63 +7,60 @@ import InputWithLabel from 'SmartFamily/src/components/landing/inputWithLabel';
 import Border from 'SmartFamily/src/components/border';
 import ModalHeader from '../modalHeader';
 
-export default ({onUpdate, onHide})=>{
+export default ({
+    onUpdate,
+    onHide,
+    form:{
+        name,
+        age,
+        phoneNumber,
+        gender,
+        height,
+        weight,
+    },
+    form,
+    activeInput,
+})=>{
+
+    _onFocus = (title, placeholder, labelText)=>{
+        console.log('onFocus: ', {title, placeholder, labelText})
+        onUpdate('activeInput', {title, placeholder, labelText})
+    }
+
+    _renderInput = (title, placeholder, labelText)=>{
+        if(activeInput !== null && title !== activeInput.title){
+            return;
+        }
+        return(
+            <View style={styles.inputContainer}>
+                <InputWithLabel
+                    value={form[title]}
+                    onUpdate={v=>{
+                        console.log('form[title]: ', form[title])
+                        console.log('title: ', title)
+                        console.log('v: ', v)
+                        onUpdate(title, v)
+                    }}
+                    onFocus={()=>_onFocus(title, placeholder, labelText)}
+                    onBlur={()=>onUpdate('activeInput', null)}
+                    placeholder={placeholder}
+                    dropDown={title==='gender'}
+                    labelText={labelText}
+                />
+            </View>
+        )
+    }
+
     return (
         <View style={styles.formContainer}>
             <ModalHeader title={'افزودن مشخصات فردی'} onHide={onHide}/>
             <Border/>
-
-            <View style={styles.inputContainer}>
-                <InputWithLabel
-                    value={'رضا شجاع'}
-                    // onChangeText={phoneNumber=>this.setState({phoneNumber})}
-                    placeholder={''}
-                    labelText="نام"
-                />
-            </View>
-            <View style={styles.inputContainer}>
-                <InputWithLabel
-                    value={'09027575765'}
-                    // onChangeText={phoneNumber=>this.setState({phoneNumber})}
-                    placeholder={'09027575765'}
-                    keyboardType="phone-pad"
-                    labelText="شماره موبایل"
-                />
-            </View>
-            <View style={styles.inputContainer}>
-                <InputWithLabel
-                    value={'زن'}
-                    // onChangeText={phoneNumber=>this.setState({phoneNumber})}
-                    placeholder={'یک مورد را انتخاب کنید'}
-                    dropDown
-                    labelText="جنسیت"
-                />
-            </View>
-            <View style={styles.inputContainer}>
-                <InputWithLabel
-                    value={'۵۶'}
-                    // onChangeText={phoneNumber=>this.setState({phoneNumber})}
-                    placeholder={'سن را وارد کنید'}
-                    labelText="سن"
-                />
-            </View>
-            <View style={styles.inputContainer}>
-                <InputWithLabel
-                    value={'۵۶'}
-                    // onChangeText={phoneNumber=>this.setState({phoneNumber})}
-                    placeholder={'قد را وارد کنید'}
-                    labelText="قد (سانتی متر)"
-                />
-            </View>
-            <View style={styles.inputContainer}>
-                <InputWithLabel
-                    value={'۴۰'}
-                    // onChangeText={phoneNumber=>this.setState({phoneNumber})}
-                    placeholder={'وزن را وارد کنید'}
-                    labelText="وزن (کیلوگرم)"
-                />
-            </View>
-
+            {_renderInput('name', "خودم", "نام")}
+            {_renderInput('phoneNumber', 'شماره تماس خود را وارد کنید', "شماره موبایل")}
+            {_renderInput('gender', 'یک مورد را انتخاب کنید', "جنسیت")}
+            {_renderInput('age', 'سن را وارد کنید', "سن")}
+            {_renderInput('height', 'قد را وارد کنید', 'قد (سانتی متر)')}
+            {_renderInput('weight', 'وزن را وارد کنید', 'وزن (کیلوگرم)')}
         </View>
     )
 }
@@ -71,7 +68,6 @@ export default ({onUpdate, onHide})=>{
 const styles = StyleSheet.create({
     formContainer:{
         paddingHorizontal: 20,
-        flex: 1,
     },
     inputContainer:{
         borderWidth: .5,

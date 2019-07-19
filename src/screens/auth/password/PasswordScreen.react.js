@@ -43,7 +43,7 @@ class PasswordScreen extends React.Component {
         <View style={styles.inputsContainer}>
           <InputWithLabel
             value={password}
-            onChangeText={password=>this.setState({password})}
+            onUpdate={password=>this.setState({password})}
             placeholder="******"
             secureTextEntry
             labelText="رمز عبور"
@@ -58,7 +58,7 @@ class PasswordScreen extends React.Component {
 
           <InputWithLabel
             value={confirmPassword}
-            onChangeText={confirmPassword=>this.setState({confirmPassword})}
+            onUpdate={confirmPassword=>this.setState({confirmPassword})}
             placeholder="******"
             secureTextEntry
             labelText="تکرار رمز عبور"
