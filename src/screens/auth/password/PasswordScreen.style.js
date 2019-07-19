@@ -11,6 +11,8 @@ export default StyleSheet.create({
     paddingTop: 10,
     justifyContent: 'space-around',
     alignItems: 'center',
+    width: '85%',
+    alignSelf: 'center',
   },
   progressBarContainer:{
     flex: 1,

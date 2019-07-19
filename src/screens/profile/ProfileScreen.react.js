@@ -1,13 +1,21 @@
 import React, { Component } from 'react'
 import styles from './ProfileScreen.style';
-import { View, StatusBar, TouchableOpacity } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import IranSansText from 'SmartFamily/src/components/iranSansText';
-import DrawerButton from '../../components/navigation/DrawerButton';
+import DrawerButton from 'SmartFamily/src/components/navigation/DrawerButton';
+import { NavigationEvents } from 'react-navigation';
+import { ACTIVE_STACK, PROFILE_STACK } from 'SmartFamily/src/store/redux/types';
+import { updateProp } from 'SmartFamily/src/store/redux/actions';
+import { connect } from 'react-redux';
+import AddCard from './components/addCard';
+import SettingModal from './components/settingModal';
 
-export default class ProfileScreen extends Component {
+class ProfileScreen extends Component {
+    state={
+        modalVisible: false,
+    };
 
     static navigationOptions = ({ navigation }) => {
-
         return{
             headerRight: <DrawerButton
                 title={'خوش آمدید'}
@@ -17,11 +25,21 @@ export default class ProfileScreen extends Component {
     };
 
     render() {
+        const { modalVisible } = this.state;
         return (
             <View style={styles.mainContainer}>
+                <NavigationEvents
+                    onWillFocus={() =>this.props.updateProp(ACTIVE_STACK, PROFILE_STACK)}
+                />
                 <StatusBar backgroundColor={'#1A98A7'}/>
-                <IranSansText>hello there</IranSansText>
+                <AddCard onPress={()=>this.setState({modalVisible: true})}/>
+                <SettingModal
+                    isVisible={modalVisible}
+                    onHide={()=>this.setState({modalVisible: false})}
+                />
             </View>
         )
     }
 }
+
+export default connect(null,{updateProp})(ProfileScreen)

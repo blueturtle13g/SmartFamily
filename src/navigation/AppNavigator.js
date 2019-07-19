@@ -2,7 +2,6 @@ import {
   createAppContainer,
   createStackNavigator,
   createSwitchNavigator,
-  createBottomTabNavigator,
 } from 'react-navigation';
 
 // auth stack
@@ -34,7 +33,7 @@ const AuthStack = createStackNavigator(
 export default createAppContainer(
   createSwitchNavigator(
     {
-      Main: MainTabNavigator,
+      MainStack: MainTabNavigator,
       AuthStack,
     },
   ),

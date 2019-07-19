@@ -14,7 +14,7 @@ export default class RegimeQuestionScreen extends React.Component {
   };
 
   _onSubmit = ()=>{
-    this.props.navigation.navigate('');
+    this.props.navigation.navigate('MainStack');
   };
 
   _onUpdateRegimes = i=>{

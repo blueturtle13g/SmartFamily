@@ -6,6 +6,8 @@ import {
     StyleSheet,
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import IranSansText from 'SmartFamily/src/components/iranSansText';
 
 export default ({
@@ -17,6 +19,67 @@ export default ({
     secureTextEntry,
     inputDescription,
 })=>{
+    const renderIcon = ()=>{
+        switch(labelText){
+            case 'نام':
+                return(
+                    <FontAwesome
+                        size={22}
+                        style={styles.labelIcon}    
+                        name={'id-badge'}
+                    />
+                );
+            case 'شماره موبایل':
+                return(
+                    <FontAwesome
+                        size={30}
+                        style={styles.labelIcon}    
+                        name={'mobile-phone'}
+                    />
+                );
+            case 'جنسیت':
+                return(
+                    <FontAwesome5
+                        size={25}
+                        style={styles.labelIcon}    
+                        name={'transgender'}
+                    />
+                );
+            case 'سن':
+                return(
+                    <MaterialIcons
+                        size={25}
+                        style={styles.labelIcon}    
+                        name={'date-range'}
+                    />
+                );
+            case 'قد (سانتی متر)':
+                return(
+                    <FontAwesome5
+                        size={23}
+                        style={styles.labelIcon}    
+                        name={'ruler-vertical'}
+                    />
+                );
+            case 'وزن (کیلوگرم)':
+                return(
+                    <FontAwesome5
+                        size={24}
+                        style={styles.labelIcon}    
+                        name={'weight'}
+                    />
+                );
+            case "رمز عبور":
+            case "تکرار رمز عبور":
+                return(
+                    <Image
+                        source={require('SmartFamily/assets/images/lockIcon.png')}
+                        style={styles.lockIcon}    
+                    />
+                )
+        }
+    }
+
     return (
         <View style={styles.mainContainer}>
             <View style={styles.inputWrapper}>
@@ -30,27 +93,22 @@ export default ({
                 />
                 <View style={styles.border}/>
                 <View style={styles.inputLabel}>
-                    <IranSansText style={styles.labelText}>{labelText}</IranSansText>
-                    {keyboardType==="phone-pad" ?
-                        <FontAwesome
-                            size={30}
-                            name={'mobile-phone'}
-                            style={styles.labelIcon}
-                        />
-                        :
-                        <Image
-                            source={require('SmartFamily/assets/images/lockIcon.png')}
-                            style={styles.lockIcon}    
-                        />
-                    }
+                    <IranSansText style={styles.labelText}>
+                        {labelText}
+                    </IranSansText>
+                    <View style={styles.iconContainer}>
+                        {renderIcon()}
+                    </View>
                 </View>
             </View>
-            <IranSansText
-              fontWeight="Light"
-              style={styles.inputDescription}
-            >
-                {inputDescription}
-            </IranSansText>
+            {!!inputDescription &&(
+                <IranSansText
+                fontWeight="Light"
+                style={styles.inputDescription}
+                >
+                    {inputDescription}
+                </IranSansText>
+            )}
         </View>
     )
 };
@@ -59,11 +117,11 @@ const styles = StyleSheet.create({
     mainContainer:{
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'flex-end'
+        alignItems: 'flex-end',
     },
     inputWrapper:{
         textAlign: 'center',
-        width: '85%',
+        width: '100%',
         height: 38,
         borderRadius: 6,
         backgroundColor: '#fff',
@@ -81,7 +139,7 @@ const styles = StyleSheet.create({
       },
       border:{
         width: 1,
-        height: '70%',
+        height: '60%',
         backgroundColor: '#000',
         borderRadius: 5,
       },
@@ -92,6 +150,12 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         alignItems: 'center',
       },
+      iconContainer:{
+          width: 45,
+          height: '100%',
+          justifyContent: 'center',
+          alignItems: 'center',
+      },
       labelText:{
           fontSize: 11,
       },
@@ -99,10 +163,10 @@ const styles = StyleSheet.create({
           width: 20,
           height: 20,
           resizeMode: 'contain',
-          marginHorizontal: 6,
+          marginHorizontal: 10,
       },
       labelIcon:{
-          marginHorizontal: 6,
+        //   marginHorizontal: 10,
       },
       inputDescription:{
         color: '#fff',

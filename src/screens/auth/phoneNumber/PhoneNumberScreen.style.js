@@ -8,6 +8,8 @@ export default StyleSheet.create({
   inputContainer:{
     flex: 2,
     alignItems: 'center',
+    width: '85%',
+    alignSelf: 'center',
   },
   progressBarContainer:{
     flex: 1,
