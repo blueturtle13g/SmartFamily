@@ -42,7 +42,9 @@ export default function index({
             source = require('SmartFamily/assets/images/veg.png')
     }
     return (
-        <View
+        <TouchableOpacity
+            activeOpacity={.9}
+            onPress={onPress}
             style={styles.mainContainer}
         >
             <View style={styles.imageContainer}>
@@ -80,7 +82,7 @@ export default function index({
                     {description}
                 </IranSansText>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 

@@ -23,7 +23,6 @@ class ActivitiesScreen extends Component {
                         dashboard
                     </IranSansText>
                 </TouchableOpacity>
-
             </View>
         )
     }

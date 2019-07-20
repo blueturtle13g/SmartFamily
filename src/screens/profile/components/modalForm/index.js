@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import InputWithLabel from 'SmartFamily/src/components/inputWithLabel';
 import Border from 'SmartFamily/src/components/border';
-import ModalHeader from '../modalHeader';
+import ModalHeader from 'SmartFamily/src/components/modalHeader';
 
 export default ({
     onUpdate,

@@ -5,14 +5,14 @@ export default StyleSheet.create({
   mainContainer:{
     flex: 1,
   },
-  inputContainer:{
-    flex: 2,
+  inputsContainer:{
+    flex: 2.3,
     alignItems: 'center',
     width: '85%',
     alignSelf: 'center',
   },
   progressBarContainer:{
-    flex: 1,
+    flex: .5,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -21,4 +21,23 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  borderContainer:{
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    paddingBottom: 10,
+    overflow: 'hidden',
+  },
+  border:{
+    height: 1,
+    width: '50%',
+    backgroundColor: '#fff',
+  },
+  borderText:{
+    color: '#fff',
+    marginHorizontal: 15,
+  }
 });

@@ -23,7 +23,7 @@ export default ({keyboardOpen, onBackPress, image})=>{
             {!keyboardOpen &&(
                 <View style={styles.titleContainer}>
                     <View style={styles.headerBlock}/>
-                    <View style={styles.headerBlock}>
+                    <View style={[styles.headerBlock, {flex: 2}]}>
                         <IranSansText style={styles.title}>Smart Family</IranSansText>
                     </View>
                     {onBackPress ?

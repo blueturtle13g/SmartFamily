@@ -18,7 +18,6 @@ export default StyleSheet.create({
     },
     mainContainer:{
         backgroundColor: '#fff',
-        minHeight: 150,
         borderTopRightRadius: 16,
         borderTopLeftRadius: 16,
         elevation: 5,

@@ -8,10 +8,12 @@ import MainButton from 'SmartFamily/src/components/buttons/main';
 import InputWithLabel from 'SmartFamily/src/components/inputWithLabel';
 import ProgressBar from '../components/progressBar';
 import { connect } from 'react-redux';
+import IranSansText from 'SmartFamily/src/components/iranSansText';
 
 class PhoneNumberScreen extends React.Component {
   state = {
     phoneNumber: '',
+    tehranAccount: '',
   };
 
   _onSubmit = async ()=>{
@@ -33,10 +35,10 @@ class PhoneNumberScreen extends React.Component {
 
   render() {
     const { keyboardOpen } = this.props;
-    const { phoneNumber } = this.state;
+    const { phoneNumber, tehranAccount } = this.state;
     return(
       <LandingWrapper keyboardOpen={keyboardOpen}>
-        <View style={styles.inputContainer}>
+        <View style={styles.inputsContainer}>
           <InputWithLabel
             value={phoneNumber}
             onUpdate={phoneNumber=>this.setState({phoneNumber})}
@@ -44,7 +46,22 @@ class PhoneNumberScreen extends React.Component {
             keyboardType="phone-pad"
             labelText="شماره موبایل"
           />
-        {!keyboardOpen &&<View style={{flex: 1}}/>}
+          {!keyboardOpen &&(
+            <View pointerEvents={'none'} style={styles.borderContainer}>
+              <View style={styles.border}/>
+              <IranSansText fontWeight={'Medium'} style={styles.borderText}>و یا</IranSansText>
+              <View style={styles.border}/>
+            </View>
+          )}
+          <InputWithLabel
+            value={tehranAccount}
+            onUpdate={tehranAccount=>this.setState({tehranAccount})}
+            labelText="کاربر تهران من"
+            inputDescription={
+              !keyboardOpen &&
+              'نام کاربری شما در www.my.tehran.ir'
+            }
+          />
         </View>
         {!keyboardOpen &&(
           <View style={styles.progressBarContainer}>
@@ -52,7 +69,12 @@ class PhoneNumberScreen extends React.Component {
           </View>
         )}
         <View style={[styles.buttonContainer]}>
-          {phoneNumber.length===11 &&(<MainButton title={'ثبت شماره موبایل'} onPress={this._onSubmit}/>)}
+          {(phoneNumber.length===11 || tehranAccount !== '') &&(
+            <MainButton
+              title={'تایید'}
+              onPress={this._onSubmit}
+            />
+          )}
         </View>
       </LandingWrapper>
     )

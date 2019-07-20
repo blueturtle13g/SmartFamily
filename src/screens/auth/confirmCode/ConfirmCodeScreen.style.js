@@ -7,14 +7,14 @@ export default StyleSheet.create({
     flex: 1,
   },
   inputContainer:{
-    flex: 2,
+    flex: 2.3,
     justifyContent: 'center',
     alignItems: 'center',
     width: '85%',
     alignSelf: 'center',
   },
   progressBarContainer:{
-    flex: 1,
+    flex: .5,
     justifyContent: 'center',
     alignItems: 'center',
   },

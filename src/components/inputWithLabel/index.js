@@ -41,6 +41,14 @@ export default ({
                         name={'mobile-phone'}
                     />
                 );
+            case 'کاربر تهران من':
+                return(
+                    <FontAwesome
+                        size={25}
+                        style={styles.labelIcon}    
+                        name={'user'}
+                    />
+                );
             case 'جنسیت':
                 return(
                     <FontAwesome5

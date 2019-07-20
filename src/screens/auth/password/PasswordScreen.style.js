@@ -15,7 +15,7 @@ export default StyleSheet.create({
     alignSelf: 'center',
   },
   progressBarContainer:{
-    flex: 1,
+    flex: .5,
     justifyContent: 'center',
     alignItems: 'center',
   },

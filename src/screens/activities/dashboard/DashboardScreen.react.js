@@ -10,6 +10,8 @@ import CategoryCard from '../components/categoryCard';
 import HeaderRight from 'SmartFamily/src/components/navigation/headerRight';
 import HeaderLeft from 'SmartFamily/src/components/navigation/headerLeft';
 import FloatButton from '../components/floatButton';
+import DashboardChart from '../components/dashboardChart';
+import ChartModal from '../components/chartModal';
 
 const CATEGORIES = [
     {
@@ -52,6 +54,9 @@ const CATEGORIES = [
 ];
 
 class DashboardScreen extends Component {
+    state={
+        modalVisible: false,
+    };
 
     static navigationOptions = ({navigation})=>{
         return{
@@ -69,28 +74,40 @@ class DashboardScreen extends Component {
                 </HeaderLeft>
             )
         }
-    }
+    };
+
+    _renderCategories = ()=> CATEGORIES.map(category=>
+        <CategoryCard
+            onPress={()=>this.props.navigation.navigate('CategoryScreen', {
+                category: category.name
+            })}
+            key={category.name}
+            category={category}
+        />
+    )
+    
 
     render() {
-        const { navigate } = this.props;
+        const { modalVisible } = this.state;
+        const { navigation:{navigate} } = this.props;
         return (
             <View>
                 <NavigationEvents
                     onWillFocus={() =>this.props.updateProp(ACTIVE_STACK, ACTIVITIES_STACK)}
                 />
                 <ScrollView style={styles.mainContainer}>
+                    <DashboardChart/>
                     <View style={styles.categoriesContainer}>
-                        {CATEGORIES.map(category=>{
-                            return(
-                                <CategoryCard
-                                    key={category.name}
-                                    category={category}
-                                />
-                            )
-                        })}
+                        {this._renderCategories()}
                     </View>
                 </ScrollView>
-                <FloatButton onPress={()=>{}}/>
+                <FloatButton
+                    onPress={()=>this.setState({modalVisible: true})}
+                />
+                <ChartModal
+                    isVisible={modalVisible}
+                    onHide={()=>this.setState({modalVisible: false})}
+                />
             </View>
         )
     }

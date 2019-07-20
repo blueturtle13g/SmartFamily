@@ -5,7 +5,7 @@ import {
     Switch,
 } from 'react-native';
 import Border from 'SmartFamily/src/components/border';
-import ModalHeader from '../modalHeader';
+import ModalHeader from 'SmartFamily/src/components/modalHeader';
 import IranSansText from 'SmartFamily/src/components/iranSansText';
 import MedicalCase from '../medicalCase';
 

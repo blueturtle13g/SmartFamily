@@ -40,7 +40,11 @@ class PasswordScreen extends React.Component {
         keyboardOpen={keyboardOpen}
         onBackPress={()=>this.props.navigation.goBack()}
       >
-        <View style={styles.inputsContainer}>
+        <View
+          style={[
+            styles.inputsContainer,
+          ]}
+        >
           <InputWithLabel
             value={password}
             onUpdate={password=>this.setState({password})}
@@ -48,11 +52,8 @@ class PasswordScreen extends React.Component {
             secureTextEntry
             labelText="رمز عبور"
             inputDescription={
-              !keyboardOpen
-              ?
-                "رمز عبور باید حداقل شامل ۶ کاراکتر باشد."
-              :
-                ""
+              !keyboardOpen &&
+              "رمز عبور باید حداقل شامل ۶ کاراکتر باشد."
             }
           />
 
@@ -62,10 +63,9 @@ class PasswordScreen extends React.Component {
             placeholder="******"
             secureTextEntry
             labelText="تکرار رمز عبور"
-            inputDescription={!keyboardOpen ?
+            inputDescription={
+              !keyboardOpen &&
               "رمز عبور باید حداقل شامل ۶ کاراکتر باشد."
-              :
-              ""
             }
           />
 
