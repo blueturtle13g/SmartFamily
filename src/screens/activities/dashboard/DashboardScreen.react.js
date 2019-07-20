@@ -78,9 +78,12 @@ class DashboardScreen extends Component {
 
     _renderCategories = ()=> CATEGORIES.map(category=>
         <CategoryCard
-            onPress={()=>this.props.navigation.navigate('CategoryScreen', {
+            onPress={()=>{
+                console.log('pressss')
+                this.props.navigation.navigate('CategoryScreen', {
                 category: category.name
-            })}
+            })
+            }}
             key={category.name}
             category={category}
         />

@@ -38,7 +38,9 @@ const MEMBERS = [
 
 class ProfileScreen extends Component {
     state={
-        modalVisible: false,
+        modalVisible: this.props.navigation.state.params
+        && this.props.navigation.state.params.modalVisible,
+        membersAdded: false,
     };
 
     static navigationOptions = ({ navigation }) => {
@@ -51,7 +53,7 @@ class ProfileScreen extends Component {
     };
 
     render() {
-        const { modalVisible } = this.state;
+        const { modalVisible, membersAdded } = this.state;
         return (
             <ScrollView style={styles.mainContainer}>
                 <NavigationEvents
@@ -59,24 +61,37 @@ class ProfileScreen extends Component {
                 />
                 <StatusBar backgroundColor={Colors.statusbar}/>
                 
-                <View style={styles.membersContainer}>
-                    <AddCard
-                        onPress={()=>this.setState({modalVisible: true})}
-                    />
-                    {MEMBERS.map(member=>{
-                        return(
-                            <MemberCard
-                                key={member.name}
-                                member={member}
+                {membersAdded ?
+                    (
+                        <View style={styles.membersContainer}>
+                            <AddCard
+                                onPress={()=>this.setState({modalVisible: true})}
                             />
-                        )
-                    })}
-                </View>
+                            {MEMBERS.map(member=>{
+                                return(
+                                    <MemberCard
+                                        key={member.name}
+                                        member={member}
+                                    />
+                                )
+                            })}
+                        </View>
+                    )
+                    :
+                    (
+                        <EmptyFamily
+                            onPress={()=>this.setState({modalVisible: true})}
+                        />
+                    )
+                }
 
-                {/* <EmptyFamily onPress={()=>this.setState({modalVisible: true})}/> */}
                 <SettingModal
                     isVisible={modalVisible}
                     onHide={()=>this.setState({modalVisible: false})}
+                    onDone={()=>this.setState({
+                        membersAdded: true,
+                        modalVisible: false
+                    })}
                 />
             </ScrollView>
         )

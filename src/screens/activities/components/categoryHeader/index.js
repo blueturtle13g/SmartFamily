@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Switch, TouchableOpacity } from 'react-native';
 import IranSansText from 'SmartFamily/src/components/iranSansText';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default ({
     layout,
@@ -19,7 +20,11 @@ export default ({
                         ]}
                         onPress={()=>onToggle('layout')}
                     >
-
+                        <MaterialCommunityIcons
+                            name={'view-grid'}
+                            // view-sequential
+                            size={25}
+                        />
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={[
@@ -29,7 +34,10 @@ export default ({
                         ]}
                         onPress={()=>onToggle('layout')}
                     >
-
+                        <MaterialCommunityIcons
+                            name={'view-sequential'}
+                            size={25}
+                        />
                     </TouchableOpacity>
                 </View>
                 <Switch

@@ -8,6 +8,7 @@ import ReportsScreen from 'SmartFamily/src/screens/reports/ReportsScreen.react';
 import ActivitiesScreen from 'SmartFamily/src/screens/activities/ActivitiesScreen.react';
 import CategoryScreen from 'SmartFamily/src/screens/activities/category/CategoryScreen.react';
 import DashboardScreen from 'SmartFamily/src/screens/activities/dashboard/DashboardScreen.react';
+import ProductDetailScreen from 'SmartFamily/src/screens/activities/productDetail/ProductDetailScreen.react';
 import TabBar from 'SmartFamily/src/components/navigation/tabBar';
 import Colors from 'SmartFamily/src/constants/Colors';
 import { Image } from 'react-native';
@@ -44,6 +45,7 @@ const ActivitiesStack = createStackNavigator(
     ActivitiesScreen,
     DashboardScreen,
     CategoryScreen,
+    ProductDetailScreen,
   },
   stackNavigationConfig
 );

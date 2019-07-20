@@ -3,6 +3,7 @@ import React from 'react';
 import {
     View,
     TouchableOpacity,
+    Image,
 } from 'react-native';
 import styles from './styles';
 import IranSansText from 'SmartFamily/src/components/iranSansText';
@@ -23,6 +24,10 @@ export default ({isVisible, onHide})=>{
                     onHide={onHide}
                 />
                 <Border/>
+                <Image
+                    style={styles.image}
+                    source={require('SmartFamily/assets/images/chart.png')}
+                />
             </View>
         </Modal>
     )

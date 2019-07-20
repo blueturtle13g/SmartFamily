@@ -9,10 +9,16 @@ import { connect } from 'react-redux';
 import Colors from 'SmartFamily/src/constants/Colors';
 import CategoryHeader from '../components/categoryHeader';
 import ProductCard from '../components/productCard';
+import ChartModal from '../components/chartModal';
+import FloatButton from '../components/floatButton';
 
 class CategoryScreen extends Component {
+    state={
+        modalVisible: false,
+    }
 
     render() {
+        const { modalVisible } = this.state;
         const { navigate, state:{params={}} } = this.props.navigation;
         return (
             <View style={styles.mainContainer}>
@@ -28,7 +34,7 @@ class CategoryScreen extends Component {
                     onlyDiscounts={false}
                 />
                 <ProductCard
-                    onPress={()=>{}}
+                    onPress={()=>navigate('ProductDetailScreen')}
                     product={
                         {
                             title: 'تخم مرغ',
@@ -38,6 +44,14 @@ class CategoryScreen extends Component {
                             price: '۱۵،۰۰۰ تومان',
                         }
                     }
+                />
+
+                <FloatButton
+                    onPress={()=>this.setState({modalVisible: true})}
+                />
+                <ChartModal
+                    isVisible={modalVisible}
+                    onHide={()=>this.setState({modalVisible: false})}
                 />
             </View>
         )

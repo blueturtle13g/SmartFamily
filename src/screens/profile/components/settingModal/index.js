@@ -86,11 +86,11 @@ class SettingModal extends React.Component{
                         onPress={()=>{
                             if(isAdding){
                                 this._onHide()
+                                this.props.onDone();
                                 this.setState({isAdding: false})
                             }else{
-
                                 this.setState({
-                                    isAdding: true,
+                                    isAdding: true
                                 })
                             }
                         }}

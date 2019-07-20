@@ -33,8 +33,8 @@ const AuthStack = createStackNavigator(
 export default createAppContainer(
   createSwitchNavigator(
     {
-      MainStack: MainTabNavigator,
       AuthStack,
+      MainStack: MainTabNavigator,
     },
   ),
 );

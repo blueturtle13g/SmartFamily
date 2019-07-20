@@ -7,6 +7,26 @@ import { ACTIVE_STACK, ACTIVITIES_STACK } from 'SmartFamily/src/store/redux/type
 import { updateProp } from 'SmartFamily/src/store/redux/actions';
 import { connect } from 'react-redux';
 import Colors from 'SmartFamily/src/constants/Colors';
+import SectionCard from './components/sectionCard';
+
+const SECTIONS = [
+    {
+        name: 'waletBoard',
+        title: 'کیف پول',
+    },
+    {
+        name: 'waletCar',
+        title: 'طرح ترافیک',
+    },
+    {
+        name: 'waletMoney',
+        title: 'کیف پول',
+    },
+    {
+        name: 'waletVeg',
+        title: 'تره بار',
+    },
+];
 
 class ActivitiesScreen extends Component {
 
@@ -18,11 +38,16 @@ class ActivitiesScreen extends Component {
                     onWillFocus={() =>this.props.updateProp(ACTIVE_STACK, ACTIVITIES_STACK)}
                 />
                 <StatusBar backgroundColor={Colors.statusbar}/>
-                <TouchableOpacity onPress={()=>navigate('DashboardScreen')}>
-                    <IranSansText>
-                        dashboard
-                    </IranSansText>
-                </TouchableOpacity>
+                <View style={styles.sectionsContainer}>
+                    {SECTIONS.map(({title,name})=>{
+                        return<SectionCard
+                            onPress={()=>navigate('DashboardScreen')}
+                            key={name}
+                            name={name}
+                            title={title}
+                        />
+                    })}
+                </View>
             </View>
         )
     }

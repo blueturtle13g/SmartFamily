@@ -14,4 +14,10 @@ export default StyleSheet.create({
         elevation: 5,
         paddingHorizontal: 15,
     },
+    image:{
+        width: '100%',
+        height: 250,
+        resizeMode: 'contain',
+        marginVertical: 2,
+    }
 })
