@@ -3,6 +3,7 @@ import { UPDATE_PROP } from '../types';
 const INITIAL_STATE = {
     keyboardOpen: false,
     activeStack: '',
+    phoneNumber: '',
 };
 
 export default (state = INITIAL_STATE, action)=>{

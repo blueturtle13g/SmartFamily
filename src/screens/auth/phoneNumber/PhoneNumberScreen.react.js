@@ -7,8 +7,10 @@ import LandingWrapper from 'SmartFamily/src/components/landingWrapper';
 import MainButton from 'SmartFamily/src/components/buttons/main';
 import InputWithLabel from 'SmartFamily/src/components/inputWithLabel';
 import ProgressBar from '../components/progressBar';
-import { connect } from 'react-redux';
 import IranSansText from 'SmartFamily/src/components/iranSansText';
+import { PHONE_NUMBER } from 'SmartFamily/src/store/redux/types';
+import { updateProp } from 'SmartFamily/src/store/redux/actions';
+import { connect } from 'react-redux';
 
 class PhoneNumberScreen extends React.Component {
   state = {
@@ -18,18 +20,8 @@ class PhoneNumberScreen extends React.Component {
 
   _onSubmit = async ()=>{
     const { phoneNumber } = this.state;
+    this.props.updateProp(PHONE_NUMBER, phoneNumber)
     this.props.navigation.navigate('ConfirmCodeScreen');
-    return;
-
-    try{
-      const res = await axios.post(BASE_URL+'Identity/Api/Account/SignUp?dto.phone='+phoneNumber);
-      console.log('res: ', res);
-      if(res.data.isSuccess){
-        this.props.navigation.navigate('ConfirmCodeScreen');
-      }
-    }catch(e){
-      console.log('e: ', e)
-    }
   }
 
 
@@ -85,4 +77,4 @@ const mapStateToProps = ({keyboardOpen})=>{
   return {keyboardOpen}
 }
 
-export default connect(mapStateToProps)(PhoneNumberScreen);
+export default connect(mapStateToProps, {updateProp})(PhoneNumberScreen);

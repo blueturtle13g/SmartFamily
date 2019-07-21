@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styles from './ReportsScreen.style';
-import { View, StatusBar } from 'react-native';
+import { View, StatusBar, Image } from 'react-native';
 import IranSansText from 'SmartFamily/src/components/iranSansText';
 import { NavigationEvents } from 'react-navigation';
 import { ACTIVE_STACK, REPORTS_STACK } from 'SmartFamily/src/store/redux/types';
@@ -27,6 +27,10 @@ class ReportsScreen extends Component {
                     onWillFocus={() =>this.props.updateProp(ACTIVE_STACK, REPORTS_STACK)}
                 />
                 <StatusBar backgroundColor={Colors.statusbar}/>
+                <Image
+                    source={require('SmartFamily/assets/images/reports.jpeg')}
+                    style={styles.fakeImage}
+                />
             </View>
         )
     }

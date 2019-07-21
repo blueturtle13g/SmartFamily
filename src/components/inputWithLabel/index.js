@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
       },
       iconContainer:{
-          width: 45,
+          width: 41,
           height: '100%',
           justifyContent: 'center',
           alignItems: 'center',

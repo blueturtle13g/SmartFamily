@@ -8,10 +8,11 @@ import styles from './styles';
 import IranSansText from 'SmartFamily/src/components/iranSansText';
 import ModalForm from '../modalForm';
 import MedicalCases from '../medicalCases';
+import { connect } from 'react-redux';
 
 const INITIAL_STATE = {
     isAdding: false,
-    name: '',
+    name: 'خودم',
     phoneNumber: '',
     gender: 'woman',
     age: '',
@@ -22,7 +23,10 @@ const INITIAL_STATE = {
 };
 
 class SettingModal extends React.Component{
-    state= INITIAL_STATE;
+    state= {
+        ...INITIAL_STATE,
+        phoneNumber: this.props.phoneNumber,
+    };
 
     _onUpdate = (k,v)=>{
         console.log('k, v: ', k, v)
@@ -112,4 +116,10 @@ class SettingModal extends React.Component{
     }
 }
 
-export default SettingModal;
+const mapStateToProps= ({phoneNumber})=>{
+    return{
+        phoneNumber
+    }
+}
+
+export default connect(mapStateToProps)(SettingModal);
